@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zoltw/throne-tracker.git"
+  },
+  "author": "Zoltw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zoltw/throne-tracker/issues"
+  },
+  "homepage": "https://github.com/Zoltw/throne-tracker#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.21"
+  }
+}
