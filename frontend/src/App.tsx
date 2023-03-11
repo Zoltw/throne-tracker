@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from 'react';
+import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export type WeatherType = {
+  temp: number;
+  text: string;
+};
+
+export type MarkerType = {
+  id: string;
+  location: google.maps.LatLngLiteral;
+  name: string;
+  phone_number: string;
+  website: string;
+};
+
+const App: React.FC = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_API_KEY!
+  });
+
+  const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
+  const [selectedMarker, setSelectedMarker] = React.useState<MarkerType>({} as MarkerType);
+
+  const onMarkerClick = (marker: MarkerType) => setSelectedMarker(marker);
+
+  if (!isLoaded) return <div>Map Loading ...</div>;
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+      <GoogleMap
+        mapContainerClassName={'map-container'}
+        center={{ lat: 37.5665, lng: 129 }}
+        zoom={10}
+      >
+      </GoogleMap>
+  );
+};
 
-export default App
+export default App;
