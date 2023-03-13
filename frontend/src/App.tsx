@@ -18,7 +18,7 @@ export type MarkerType = {
 const App: React.FC = () => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_API_KEY!
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!
   });
 
   const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
@@ -31,8 +31,8 @@ const App: React.FC = () => {
   return (
       <GoogleMap
         mapContainerClassName={'map-container'}
-        center={{ lat: 37.5665, lng: 129 }}
-        zoom={10}
+        center={{ lat: 50.0628492543524, lng: 19.93685690022494}}
+        zoom={15}
       >
       </GoogleMap>
   );
