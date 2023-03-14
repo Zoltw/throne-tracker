@@ -1,0 +1,49 @@
+env:
+  es2021: true
+extends:
+  - google
+  - "plugin:@typescript-eslint/recommended"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - "@typescript-eslint"
+rules:
+  require-jsdoc: "off"
+  linebreak-style: "off"
+  object-curly-spacing: "off"
+  "@typescript-eslint/object-curly-spacing":
+    - error
+    - always
+  max-len: ["error", { "code": 160, "comments": 320 }]
+  object-property-newline: ["error", { "allowAllPropertiesOnSameLine": true }]
+  no-console: "off"
+  "@typescript-eslint/no-unused-vars": "off"
+  space-infix-ops: ["error", { "int32Hint": false }]
+  camelcase: ["off", { "properties": "never" }]
+  indent: ["error", 2, { "SwitchCase": 1 }]
+  "@typescript-eslint/indent": ["error", 2, { "SwitchCase": 1 }]
+  sort-imports:
+    [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": false,
+      },
+    ]
+  no-useless-return: error
+  arrow-spacing: error
+  no-warning-comments:
+    ["error", { "terms": ["TODO", "!"], "location": "start" }]
+  "@typescript-eslint/ban-types": ["error", { "types": { "object": false } }]
+  "@typescript-eslint/type-annotation-spacing": ["error", { "after": true }]
+  semi: "off"
+  "@typescript-eslint/semi": "error"
+  "@typescript-eslint/explicit-module-boundary-types":
+    ["warn", { allowArgumentsExplicitlyTypedAsAny: true }]
+  quote-props: ["error", "as-needed"]
+  space-in-parens: ["error", "never"]

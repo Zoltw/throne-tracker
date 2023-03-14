@@ -1,0 +1,11 @@
+.bigbox {
+    position: absolute;
+    width: 335px;
+    height: 730px;
+    right: 5rem;
+    top: 6rem;
+
+    background: #FFFFFF;
+    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}

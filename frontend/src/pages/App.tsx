@@ -1,6 +1,8 @@
 import React from 'react';
-import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
-import './App.css'
+import { GoogleMap, InfoWindow, Marker, useJsApiLoader } from '@react-google-maps/api';
+import style from './App.module.css';
+import Map from '../components/Map/Map';
+import BigBox from '../components/BigBox/BigBox';
 
 export type WeatherType = {
   temp: number;
@@ -11,14 +13,13 @@ export type MarkerType = {
   id: string;
   location: google.maps.LatLngLiteral;
   name: string;
-  phone_number: string;
-  website: string;
+  street: string;
 };
 
 const App: React.FC = () => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!,
   });
 
   const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
@@ -29,12 +30,10 @@ const App: React.FC = () => {
   if (!isLoaded) return <div>Map Loading ...</div>;
 
   return (
-      <GoogleMap
-        mapContainerClassName={'map-container'}
-        center={{ lat: 50.0628492543524, lng: 19.93685690022494}}
-        zoom={15}
-      >
-      </GoogleMap>
+    <>
+      <Map />
+      <BigBox title={'McDonald\'s - Floriańska 55'}/>
+    </>
   );
 };
 
