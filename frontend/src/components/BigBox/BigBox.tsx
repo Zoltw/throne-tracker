@@ -1,14 +1,14 @@
 import { Component, HTMLAttributes, ReactNode } from 'react';
 import style from './BigBox.module.css';
 
-import coins from '../../assets/coins.svg';
-import toilet from '../../assets/toilet.svg';
-import paper from '../../assets/toilet-paper.svg';
-import shower from '../../assets/shower.svg';
-import soap from '../../assets/soap.svg';
-import spray from '../../assets/spray.svg';
+import coins from '@assets/coins.svg';
+import toilet from '@assets/toilet.svg';
+import paper from '@assets/toilet-paper.svg';
+import shower from '@assets/shower.svg';
+import soap from '@assets/soap.svg';
+import spray from '@assets/spray.svg';
 
-import Button from '../Button/Button';
+import Button from '@components/Button/Button';
 
 export interface BigBoxProps {
   id?: string;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { GoogleMap, InfoWindow, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
 import style from './App.module.css';
-import Map from '../components/Map/Map';
-import BigBox from '../components/BigBox/BigBox';
+import Map from '@components/Map/Map';
+import BigBox from '@components/BigBox/BigBox';
 
 export type WeatherType = {
   temp: number;
