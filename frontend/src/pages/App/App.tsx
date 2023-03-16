@@ -3,6 +3,8 @@ import { useJsApiLoader } from '@react-google-maps/api';
 import style from './App.module.css';
 import Map from '@components/Map/Map';
 import BigBox from '@components/BigBox/BigBox';
+import Toilet from '@assets/example.jpg';
+import SmallBox from '@components/SmallBox/SmallBox';
 
 export type WeatherType = {
   temp: number;
@@ -32,7 +34,21 @@ const App: React.FC = () => {
   return (
     <>
       <Map />
-      <BigBox title={'McDonald\'s - Floriańska 55'}/>
+      <BigBox
+        title={'McDonald\'s - Floriańska 55'}
+        src={Toilet}
+        grade={4.2}
+        reviewCount={22}
+        atribute1={'free'}
+        atribute2={'clean'}
+        atribute3={'white'}
+        atribute4={'yes'}
+        atribute5={'no'}
+        atribute6={'ugly'}
+      />
+      <SmallBox
+        text={'McDonald\'s - Floriańska 55'}
+      />
     </>
   );
 };

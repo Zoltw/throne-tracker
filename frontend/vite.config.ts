@@ -19,4 +19,4 @@ export default defineConfig({
       { find: '@assets', replacement: resolve(rootDir, './src/assets') },
     ],
   },
-})
+});

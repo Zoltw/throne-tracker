@@ -7,8 +7,10 @@ import paper from '@assets/toilet-paper.svg';
 import shower from '@assets/shower.svg';
 import soap from '@assets/soap.svg';
 import spray from '@assets/spray.svg';
+import star from '@assets/star.svg';
 
 import Button from '@components/Button/Button';
+import Attribute from '@components/Attribute/Attribute';
 
 export interface BigBoxProps {
   id?: string;
@@ -31,34 +33,38 @@ export default class BigBox extends Component<BigBoxProps> {
   render(): JSX.Element {
     return (
       <div className={[style.bigbox, this.props.className].join(' ')}>
-        <img src={this.props.src} alt={this.props.alt} />
+        <img className={style.mainPhoto} src={this.props.src} alt={this.props.alt} />
         <h3>{this.props.title}</h3>
         <div className={style.grade}>
           <span>{this.props.grade}</span>
           <div className={style.starsContainer}>
-            <span className={style.star} id={'first'}></span>
-            <span className={style.star} id={'second'}></span>
-            <span className={style.star} id={'third'}></span>
-            <span className={style.star} id={'fourth'}></span>
-            <span className={style.star} id={'fifth'}></span>
+            <span className={style.star} id={'first'}>
+              <img src={star}/>
+            </span>
+            <span className={style.star} id={'second'}>
+              <img src={star}/>
+            </span>
+            <span className={style.star} id={'third'}>
+              <img src={star}/>
+            </span>
+            <span className={style.star} id={'fourth'}>
+              <img src={star}/>
+            </span>
+            <span className={style.star} id={'fifth'}>
+              <img src={star}/>
+            </span>
           </div>
           <span>{this.props.reviewCount} reviews</span>
         </div>
         <div className={style.attributes}>
-          <img src={coins}/>
-          <span>{this.props.atribute1}</span>
-          <img src={toilet}/>
-          <span>{this.props.atribute2}</span>
-          <img src={paper}/>
-          <span>{this.props.atribute3}</span>
-          <img src={soap}/>
-          <span>{this.props.atribute4}</span>
-          <img src={shower}/>
-          <span>{this.props.atribute5}</span>
-          <img src={spray}/>
-          <span>{this.props.atribute6}</span>
+          <Attribute src={coins} text={this.props.atribute1}/>
+          <Attribute src={toilet} text={this.props.atribute2}/>
+          <Attribute src={paper} text={this.props.atribute3}/>
+          <Attribute src={soap} text={this.props.atribute4}/>
+          <Attribute src={shower} text={this.props.atribute5}/>
+          <Attribute src={spray} text={this.props.atribute6}/>
         </div>
-        <Button text={'rate it'}/>
+        <Button className={style.buttonBox} text={'rate it'}/>
       </div>
     );
   }
