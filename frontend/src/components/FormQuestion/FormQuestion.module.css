@@ -1,0 +1,13 @@
+.checkButton {
+    height: 2rem;
+    width: 2rem;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.formQuest {
+    display: flex;
+    justify-content: space-between;
+}

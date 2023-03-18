@@ -6,6 +6,7 @@ import BigBox from '@components/BigBox/BigBox';
 import Toilet from '@assets/example.jpg';
 import SmallBox from '@components/SmallBox/SmallBox';
 import ContentReview from '@components/ContentReview/ContentReview';
+import ContentRate from '@components/ContentRate/ContentRate';
 
 export type WeatherType = {
   temp: number;
@@ -37,18 +38,21 @@ const App: React.FC = () => {
       <Map />
       <BigBox
         src={Toilet}
+        // children={
+        //   <ContentReview
+        //     title={'McDonald\'s - Floriańska 55'}
+        //     grade={4.5}
+        //     reviewCount={23}
+        //     atribute1={'free'}
+        //     atribute2={'clean'}
+        //     atribute3={'white'}
+        //     atribute4={'yes'}
+        //     atribute5={'no'}
+        //     atribute6={'ugly'}
+        //   />}
         children={
-          <ContentReview
-            title={'McDonald\'s - Floriańska 55'}
-            grade={4.5}
-            reviewCount={23}
-            atribute1={'free'}
-            atribute2={'clean'}
-            atribute3={'white'}
-            atribute4={'yes'}
-            atribute5={'no'}
-            atribute6={'ugly'}
-          />}
+          <ContentRate />
+        }
       />
       <SmallBox
         text={'McDonald\'s - Floriańska 55'}

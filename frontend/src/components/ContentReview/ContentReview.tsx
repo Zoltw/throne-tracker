@@ -12,7 +12,7 @@ import star from '@assets/star.svg';
 import Button from '@components/Button/Button';
 import Attribute from '@components/Attribute/Attribute';
 
-export interface BigBoxProps {
+export interface ContentReviewProps {
   id?: string;
   className?: string;
   title?: string;
@@ -27,10 +27,10 @@ export interface BigBoxProps {
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-export default class BigBox extends Component<BigBoxProps> {
+export default class ContentReview extends Component<ContentReviewProps> {
   render(): JSX.Element {
     return (
-      <>
+      <section className={[style.contentReviewSection, this.props.className].join(' ')}>
         <h3>{this.props.title}</h3>
         <div className={style.grade}>
           <span>{this.props.grade}</span>
@@ -62,7 +62,7 @@ export default class BigBox extends Component<BigBoxProps> {
           <Attribute src={spray} text={this.props.atribute6}/>
         </div>
         <Button className={style.buttonBox} text={'rate it'}/>
-      </>
+      </section>
     );
   }
 }

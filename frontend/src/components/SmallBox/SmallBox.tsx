@@ -3,14 +3,14 @@ import style from './SmallBox.module.css';
 
 import Button from '@components/Button/Button';
 
-export interface BigBoxProps {
+export interface SmallBoxProps {
   id?: string;
   className?: string;
   text?: string;
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-export default class BigBox extends Component<BigBoxProps> {
+export default class SmallBox extends Component<SmallBoxProps> {
   render(): JSX.Element {
     return (
       <div className={[style.smallBox, this.props.className].join(' ')}>

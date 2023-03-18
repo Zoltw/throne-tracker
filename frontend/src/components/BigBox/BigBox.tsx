@@ -1,5 +1,6 @@
 import { Component, HTMLAttributes } from 'react';
 import style from './BigBox.module.css';
+
 export interface BigBoxProps {
   id?: string;
   className?: string;
