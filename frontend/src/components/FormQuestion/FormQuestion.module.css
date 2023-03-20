@@ -1,6 +1,7 @@
 .checkButton {
     height: 2rem;
     width: 2rem;
+    margin: 0.1rem 0.2rem 0 0.2rem;
 }
 
 input[type="checkbox"] {
@@ -10,4 +11,5 @@ input[type="checkbox"] {
 .formQuest {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }

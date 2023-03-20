@@ -15,9 +15,11 @@ export default class ContentRate extends Component<ContentRateProps> {
   render(): JSX.Element {
     return (
       <section className={[style.contentRateSection, this.props.className].join(' ')}>
-        <span>Rate your visit</span>
-        <StarSection/>
-        <div className={'formSection'}>
+        <div className={style.rateStar}>
+          <span>Rate your visit</span>
+          <StarSection/>
+        </div>
+        <div className={style.formSection}>
           <FormQuestion text={'Was your visit free?'}/>
           <FormQuestion text={'Was it clean?'}/>
           <FormQuestion text={'Was the paper white?'}/>

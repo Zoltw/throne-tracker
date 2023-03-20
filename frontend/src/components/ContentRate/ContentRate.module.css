@@ -1,3 +1,19 @@
 .formSection {
-    margin: 0.5rem;
+    margin: 3rem 1.5rem 2rem 1.5rem;
+}
+
+.rateStar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonBox {
+    position: absolute;
+    right: 30%;
+    bottom: 10%
+}
+
+.contentRateSection {
+    margin-top: 1rem;
 }

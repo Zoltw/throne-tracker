@@ -1,0 +1,109 @@
+.backgroundSign { 
+    background: url(src/assets/backgroundSign.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section {
+    width: 45rem;
+    height: 45rem;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: .10s;
+    background-color: #202020;
+  
+    margin: 0 0.8em 0 0;
+    vertical-align: bottom;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: #202020;
+  }
+  
+  input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1.5em;
+    text-align: center;
+    color: #8685EF;
+  }
+  
+  input[type="checkbox"]:checked:before {
+    content: '✔';
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.5em;
+  }
+  
+  .form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 2em;
+    max-width: 42em;
+  }
+  
+  .formOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 4rem;
+    width: 100%;
+  }
+  
+  .checkboxLabel {
+    margin-top: .2em;
+  }
+  
+  .formOptionsLink {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-right: 1em;
+    height: 100%;
+  }
+  
+  .formOptions a {
+    font-size: 1.4em;
+    text-decoration: underline;
+    color: #8685EF;
+  }
+  
+  .label {
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+  
+  form > label > em {
+    line-height: 1.7em;
+  }
+  
