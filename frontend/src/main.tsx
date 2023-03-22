@@ -5,6 +5,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Signup from '@pages/Signup/Signup';
+import Login from '@pages/Login/Login';
 
 
 const router = createBrowserRouter([
@@ -16,21 +17,19 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />,
-    // errorElement: <App />,
+    errorElement: <App />,
   },
   {
     path: '/login',
-    // element: <Login />,
+    element: <Login />,
     errorElement: <App />,
   },
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Suspense fallback={< div>Loading ...</div>}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </Suspense>,
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
 );
 

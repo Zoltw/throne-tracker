@@ -12,12 +12,10 @@ export default function Signup(): JSX.Element {
     setIsSHown((isShown) => !isShown);
   };
 
-  const nickname = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const passwordConfirmation = useRef(null);
 
-  const [usernameValid, setUsernameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
   const [passwordConfirmationValid, setPasswordConfirmationValid] = useState(false);
@@ -26,9 +24,8 @@ export default function Signup(): JSX.Element {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    setIsFormValid(usernameValid && emailValid && passwordValid && passwordConfirmationValid && tosChecked);
+    setIsFormValid(emailValid && passwordValid && passwordConfirmationValid && tosChecked);
   }, [
-    usernameValid,
     emailValid,
     passwordValid,
     passwordConfirmationValid,
@@ -40,14 +37,6 @@ export default function Signup(): JSX.Element {
       <section className={style.section}>
         <h1 className={style.title}>Sign up to Throne Tracker</h1>
         <form method="post" action="#" className={style.form} name={'signup'}>
-          <Input
-            useRef={nickname}
-            correctValue={setUsernameValid}
-            type={'text'}
-            name={'usernameLog'}
-            placeholder={'Username'}
-            required
-            className={style.formElement} />
           <Input
             useRef={email}
             correctValue={setEmailValid}

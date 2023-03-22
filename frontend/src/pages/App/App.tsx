@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import style from './App.module.css';
 import Map from '@components/Map/Map';
@@ -7,6 +7,8 @@ import Toilet from '@assets/example.jpg';
 import SmallBox from '@components/SmallBox/SmallBox';
 import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
+import NavBar from '@components/NavBar/NavBar';
+import BurgerButton from '@components/BurgerButton/BurgerButton';
 
 export type WeatherType = {
   temp: number;
@@ -20,7 +22,7 @@ export type MarkerType = {
   street: string;
 };
 
-const App: React.FC = () => {
+export default function App(): JSX.Element {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!,
@@ -35,7 +37,12 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Map />
+      <BurgerButton/>
+      {/* <NavBar/> */}
+      {/* <div className={style.backgroundNavbar}/> */}
+      <Suspense fallback={<div>Loading ...</div>}>
+        <Map />
+      </Suspense>
       <BigBox
         src={Toilet}
         // children={
@@ -59,6 +66,4 @@ const App: React.FC = () => {
       />
     </>
   );
-};
-
-export default App;
+}
