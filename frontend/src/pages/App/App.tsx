@@ -45,21 +45,21 @@ export default function App(): JSX.Element {
       </Suspense>
       <BigBox
         src={Toilet}
-        // children={
-        //   <ContentReview
-        //     title={'McDonald\'s - Floriańska 55'}
-        //     grade={4.5}
-        //     reviewCount={23}
-        //     atribute1={'free'}
-        //     atribute2={'clean'}
-        //     atribute3={'white'}
-        //     atribute4={'yes'}
-        //     atribute5={'no'}
-        //     atribute6={'ugly'}
-        //   />}
         children={
-          <ContentRate />
-        }
+          <ContentReview
+            title={'McDonald\'s - Floriańska 55'}
+            grade={4.5}
+            reviewCount={23}
+            atribute1={'free'}
+            atribute2={'clean'}
+            atribute3={'white'}
+            atribute4={'yes'}
+            atribute5={'no'}
+            atribute6={'ugly'}
+          />}
+        // children={
+        //   <ContentRate />
+        // }
       />
       <SmallBox
         text={'McDonald\'s - Floriańska 55'}
