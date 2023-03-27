@@ -9,6 +9,7 @@ import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
 import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
+// import Marker from '@components/Marker/Marker';
 
 export type WeatherType = {
   temp: number;
@@ -43,7 +44,7 @@ export default function App(): JSX.Element {
       <Suspense fallback={<div>Loading ...</div>}>
         <Map />
       </Suspense>
-      <BigBox
+      {/* <BigBox
         src={Toilet}
         children={
           <ContentReview
@@ -57,13 +58,27 @@ export default function App(): JSX.Element {
             atribute5={'no'}
             atribute6={'ugly'}
           />}
-        // children={
-        //   <ContentRate />
-        // }
-      />
-      <SmallBox
+        children={
+          <ContentRate />
+        }
+      /> */}
+      {/* <Marker throne={{
+        throneId: 0,
+        location: {
+          address: {
+            country: 'Poland',
+            city: 'Kraków',
+            zip: '31-019',
+            addressLine1: 'Floriańska 55',
+          },
+          latitude: 50.0646923541517,
+          longitude: 19.941350749541165,
+        },
+        name: 'McDonald\'s - Floriańska 55',
+      }} map={<Map/>}/> */}
+      {/* <SmallBox
         text={'McDonald\'s - Floriańska 55'}
-      />
+      /> */}
     </>
   );
 }

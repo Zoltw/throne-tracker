@@ -1,8 +1,10 @@
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, Marker, useJsApiLoader } from '@react-google-maps/api';
 import style from './Map.module.css';
 import { center, options } from './settings';
+import CustomMarker from '../Marker/CustomMarker';
 
-import { Component, HTMLAttributes } from 'react';
+import { Component, HTMLAttributes, useState } from 'react';
+import Button from '@components/Button/Button';
 
 export interface MapProps {
   id?: string;
@@ -46,6 +48,7 @@ export default class Map extends Component<MapProps> {
         streetView={this.props.streetView}
         onClick={this.props.onClick}
       >
+        <CustomMarker />
       </GoogleMap>
     );
   }
