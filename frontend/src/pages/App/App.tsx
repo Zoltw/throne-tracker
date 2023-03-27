@@ -9,19 +9,6 @@ import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
 import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
-// import Marker from '@components/Marker/Marker';
-
-export type WeatherType = {
-  temp: number;
-  text: string;
-};
-
-export type MarkerType = {
-  id: string;
-  location: google.maps.LatLngLiteral;
-  name: string;
-  street: string;
-};
 
 export default function App(): JSX.Element {
   const { isLoaded } = useJsApiLoader({
@@ -30,9 +17,6 @@ export default function App(): JSX.Element {
   });
 
   const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
-  const [selectedMarker, setSelectedMarker] = React.useState<MarkerType>({} as MarkerType);
-
-  const onMarkerClick = (marker: MarkerType) => setSelectedMarker(marker);
 
   if (!isLoaded) return <div>Map Loading ...</div>;
 

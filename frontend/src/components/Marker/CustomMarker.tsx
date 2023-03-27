@@ -11,7 +11,7 @@ export type MarkerType = {
 };
 
 export default function CustomMarker(): JSX.Element {
-  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
+  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>();
 
   return (
     <>
@@ -28,14 +28,15 @@ export default function CustomMarker(): JSX.Element {
           </div>
         );
       })}
-      {selectedMarker && Object.keys(selectedMarker).length > 0 && (
+      {selectedMarker && (
         <InfoWindow
           position={selectedMarker.location}
+          options={{ maxWidth: 200 }}
           onCloseClick={() => {
             setSelectedMarker(null);
           }}
         >
-          <div>
+          <div className={style.smallBox}>
             <span>{selectedMarker.name}</span>
             <Button text={'details'} />
             <Button text={'rate it'} />
