@@ -1,18 +1,13 @@
-import express from 'express';
+import express from "express";
+import toiletRoutes from "./routes/toiletRoutes";
+import ratingRoutes from "./routes/ratingRoutes";
+import userRoutes from "./routes/userRoutes";
 
-class App {
-    public server;
+const app = express();
 
-    constructor() {
-        this.server = express();
+app.use(express.json());
+app.use("/toilet", toiletRoutes);
+app.use("/rating", ratingRoutes);
+app.use("/users", userRoutes);
 
-        this.middlewares();
-    }
-
-    middlewares() {
-        this.server.use(express.json());
-    }
-
-}
-
-export default new App().server;
+export default app;
