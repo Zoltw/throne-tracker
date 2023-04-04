@@ -28,7 +28,7 @@ export default function App(): JSX.Element {
       <Suspense fallback={<div>Loading ...</div>}>
         <Map />
       </Suspense>
-      {/* <BigBox
+      <BigBox
         src={Toilet}
         children={
           <ContentReview
@@ -42,10 +42,10 @@ export default function App(): JSX.Element {
             atribute5={'no'}
             atribute6={'ugly'}
           />}
-        children={
-          <ContentRate />
-        }
-      /> */}
+        // children={
+        //   <ContentReview />
+        // }
+      />
       {/* <Marker throne={{
         throneId: 0,
         location: {

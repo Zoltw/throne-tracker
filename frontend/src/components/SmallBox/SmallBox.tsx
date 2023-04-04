@@ -6,6 +6,7 @@ import Button from '@components/Button/Button';
 export interface SmallBoxProps {
   id?: string;
   className?: string;
+  firstState?: string;
   text?: string;
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }

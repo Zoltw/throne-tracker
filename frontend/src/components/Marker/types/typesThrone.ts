@@ -10,7 +10,7 @@ export interface FetchThronesResponse {
       }
       latitude: number | undefined;
       longitude: number | undefined;
-    };
+    }
     name: string;
-  };
+  }[];
 }

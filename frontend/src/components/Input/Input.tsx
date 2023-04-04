@@ -119,32 +119,6 @@ export default class Inputs extends Component<InputProps, InputState> {
         this.props.correctValue?.(true);
       }
     }
-
-    if (input.name.includes('username')) {
-      if (value.length < 3) {
-        this.setState({ message: 'Username is too short' });
-        this.props.correctValue?.(false);
-      } else if (value.length > 64) {
-        this.setState({ message: 'Username is too long' });
-        this.props.correctValue?.(false);
-      } else {
-        this.setState({ message: '' });
-        this.props.correctValue?.(true);
-      }
-    }
-
-    if (input.name.includes('title')) {
-      if (value.length > 64) {
-        this.setState({ message: 'Title is too long' });
-        this.props.correctValue?.(false);
-      } else if (value.length < 5) {
-        this.setState({ message: 'Title is too short' });
-        this.props.correctValue?.(false);
-      } else {
-        this.setState({ message: '' });
-        this.props.correctValue?.(true);
-      }
-    }
   };
 
   public componentDidMount(): void {
