@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const ratingSchema = new mongoose.Schema({
+  rateId: { type: String, required: true, unique: true },
   toiletId: { type: mongoose.Schema.Types.ObjectId, ref: "Toilet", required: true },
   amountRates: { type: Number, required: true },
   rate: { type: Number, required: true },

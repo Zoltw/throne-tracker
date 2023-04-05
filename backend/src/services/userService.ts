@@ -9,7 +9,7 @@ export const loginUser = async (email: string, password: string): Promise<typeof
 };
 
 export const getUser = async (userId: string): Promise<typeof User | null> => {
-    return {} as typeof User;
+    return await User.findById({ userId });
 };
 
 export const updateUser = async (userId: string, userData: typeof User): Promise<typeof User | null> => {

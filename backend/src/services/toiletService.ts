@@ -5,5 +5,5 @@ export const getAllToilets = async (): Promise<typeof Toilet[]> => {
   };
   
   export const getToiletById = async (id: string): Promise<typeof Toilet | null> => {
-    return await Toilet.findById(id);
+    return await Toilet.findById({ id });
   };
