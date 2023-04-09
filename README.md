@@ -7,8 +7,6 @@
  <h1 align="center">Throne Tracker</h1>
  <br/>
 
-  ## Setting up development environment of frontend
-
  ### Requirements:
  - [Node.js](https://nodejs.org/en/)
 
@@ -17,16 +15,34 @@
  ```bash
  git clone https://github.com/Zoltw/throne-tracker.git
  ```
- 3. Change working directory to `frontend`
+
+ ## Setting up development environment of frontend
+ 1. Change working directory to `frontend`
  ```bash
  cd frontend
  ```
-4. Install dependencies
+2. Install dependencies
  ```bash
  npm ci
  ```
-5. Start development server
+3. Start development server
  ```bash
  npm run dev
  ```
-6. Open `http://localhost:3000` in your browser
+4. Open `http://localhost:3000` in your browser
+
+## Setting up development environment of backend
+
+ 1. Change working directory to `backend`
+ ```bash
+ cd backend
+ ```
+2. Install dependencies
+ ```bash
+ npm ci
+ ```
+3. Start development server
+ ```bash
+ npm start
+ ```
+4. Server is running on port 8080 - `http://localhost:8080`
