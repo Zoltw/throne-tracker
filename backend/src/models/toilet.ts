@@ -1,21 +1,39 @@
 import mongoose from "mongoose";
 
+export interface ToiletInterface extends mongoose.Document {
+  toiletId: string;
+  name: string;
+  location: {
+    address: {
+      country: string;
+      city: string;
+      zip: string;
+      addressLine1: string;
+    };
+    latitude: number;
+    longitude: number;
+  };
+  rates: {
+    id: string;
+  };
+}
+
 const toiletSchema = new mongoose.Schema({
   toiletId: { type: String, required: true },
   name: { type: String, required: true },
   location: {
     address: {
-        country: { type: String, required: true },
-        city: { type: String, required: true },
-        zip: { type: String, required: true },
-        addressLine1: { type: String, required: true },
+      country: { type: String, required: true },
+      city: { type: String, required: true },
+      zip: { type: String, required: true },
+      addressLine1: { type: String, required: true },
     },
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
   },
-    rates: {
-        id: { type: String, required: true },
-    }
+  rates: {
+    id: { type: String, required: true },
+  },
 });
 
-export const Toilet = mongoose.model("Toilet", toiletSchema);
+export const Toilet = mongoose.model<ToiletInterface>("Toilet", toiletSchema);

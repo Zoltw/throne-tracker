@@ -1,10 +1,11 @@
-import { Rating } from "../models/rating";
+import { Rating, RatingInterface } from "../models/rating";
 
-export const addRating = async (ratingData: typeof Rating): Promise<typeof Rating> => {
+export const addRating = async (ratingData: RatingInterface): Promise<RatingInterface> => {
   const rating = new Rating(ratingData);
-  return {} as typeof Rating;
+  await rating.save();
+  return rating;
 };
 
-export const getRatingsByToiletId = async (toiletId: string): Promise<typeof Rating[]> => {
+export const getRatingsByToiletId = async (toiletId: string): Promise<RatingInterface[]> => {
   return await Rating.find({ toiletId });
 };

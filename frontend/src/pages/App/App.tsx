@@ -43,7 +43,7 @@ export default function App(): JSX.Element {
             atribute6={'ugly'}
           />}
         // children={
-        //   <ContentReview />
+        //   <ContentRate />
         // }
       />
       {/* <Marker throne={{

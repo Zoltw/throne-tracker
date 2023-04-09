@@ -1,9 +1,9 @@
-import { Toilet } from "../models/toilet";
+import { Toilet, ToiletInterface } from "../models/toilet";
 
-export const getAllToilets = async (): Promise<typeof Toilet[]> => {
-    return await Toilet.find();
-  };
-  
-  export const getToiletById = async (id: string): Promise<typeof Toilet | null> => {
-    return await Toilet.findById({ id });
-  };
+export const getAllToilets = async (): Promise<ToiletInterface[]> => {
+  return await Toilet.find();
+};
+
+export const getToiletById = async (id: string): Promise<ToiletInterface | null> => {
+  return await Toilet.findById(id);
+};
