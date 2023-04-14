@@ -58,5 +58,5 @@
 ## Diagram
 
 <p align="center">
-  <img src="throne-tracker-mongo-diagram.png" alt="Throne Tracker Diagram"/>
+  <img src="resources/throne-tracker-mongo-diagram.png" alt="Throne Tracker Diagram"/>
 </p>
