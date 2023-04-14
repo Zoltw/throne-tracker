@@ -31,6 +31,13 @@
  ```
 4. Open `http://localhost:3000` in your browser
 
+## Setting up development environment of mongodb
+
+1. On working directory
+  ```bash
+  docker-compose up mongodb
+  ```
+
 ## Setting up development environment of backend
 
  1. Change working directory to `backend`
@@ -46,3 +53,10 @@
  npm start
  ```
 4. Server is running on port 8080 - `http://localhost:8080`
+
+
+## Diagram
+
+<p align="center">
+  <img src="throne-tracker-mongo-diagram.png" alt="Throne Tracker Diagram"/>
+</p>

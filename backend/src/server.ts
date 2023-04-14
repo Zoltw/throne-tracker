@@ -1,7 +1,7 @@
 import app from "./app";
 import { connectDatabase } from "./utils/database";
 
-const PORT = process.env.SERVER_PORT || 8080;
+const PORT = 8080;
 
 const startServer = async () => {
   try {
