@@ -7,6 +7,7 @@ export interface ButtonProps {
   text: string;
   width?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
   className?: string;
   id?: string;
 }
@@ -18,7 +19,7 @@ export default class Button extends Component<ButtonProps> {
         className={[style.button, this.props.className].join(' ')}
         style={{ width: this.props.width }}
         onClick={this.props.onClick}
-        type={'button'}
+        type={this.props.type}
         id={this.props.id}>
         {this.props.text}
       </button>

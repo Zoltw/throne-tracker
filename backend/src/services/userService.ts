@@ -2,10 +2,13 @@ import { User, UserInterface } from "../models/user";
 import bcrypt from "bcrypt";
 
 export const createUser = async (userData: UserInterface): Promise<UserInterface> => {
+  console.log(userData);
   const hashedPassword = await bcrypt.hash(userData.password, 10);
   // const user = new User({ ...userData.toObject(), password: hashedPassword });
   const user = new User({ ...userData, password: hashedPassword });
+  console.log(user);
   await user.save();
+  console.log("dupa");
   return user;
 };
 

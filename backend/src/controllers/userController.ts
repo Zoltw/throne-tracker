@@ -3,12 +3,15 @@ import * as userService from "../services/userService";
 import { UserInterface } from "../models/user";
 
 export const createUser = async (req: Request, res: Response) => {
-    const userData: UserInterface & { passwordConfirm: string } = req.body;
-    if (userData.password !== userData.passwordConfirm) {
+    console.log(req.body);
+    const userData: UserInterface & { passwordConfirmation: string } = req.body;
+    if (userData.password !== userData.passwordConfirmation) {
       return res.status(400).json({ message: "Passwords do not match" });
     }
+    console.log("dupa");
     try {
       const newUser = await userService.createUser(userData);
+      console.log("dupa2");
       res.status(201).json(newUser);
     } catch (error) {
       res.status(400).json({ message: error });

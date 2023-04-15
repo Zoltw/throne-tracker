@@ -3,6 +3,7 @@ import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+const fetchUrl = 'http://localhost:8080/users/register';
 
 export default function Signup(): JSX.Element {
   const [isShown, setIsSHown] = useState(false);
@@ -12,9 +13,9 @@ export default function Signup(): JSX.Element {
     setIsSHown((isShown) => !isShown);
   };
 
-  const email = useRef(null);
-  const password = useRef(null);
-  const passwordConfirmation = useRef(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
+  const passwordConfirmation = useRef<HTMLInputElement>(null);
 
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
@@ -32,11 +33,36 @@ export default function Signup(): JSX.Element {
     tosChecked,
   ]);
 
+  const sendRegisterRequest = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+
+    const body = {
+      email: email.current?.value,
+      password: password.current?.value,
+      passwordConfirmation: passwordConfirmation.current?.value,
+    };
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    };
+
+
+    try {
+      const response = await fetch(fetchUrl, requestOptions);
+      if (!response.ok) throw response;
+      console.log(response);
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className={style.backgroundSign}>
       <section className={style.section}>
         <h1 className={style.title}>Sign up to Throne Tracker</h1>
-        <form method="post" action="#" className={style.form} name={'signup'}>
+        <form onSubmit={sendRegisterRequest} className={style.form} name={'signup'}>
           <Input
             useRef={email}
             correctValue={setEmailValid}
@@ -48,7 +74,7 @@ export default function Signup(): JSX.Element {
           <Input
             useRef={password}
             correctValue={setPasswordValid}
-            // sibling={passwordConfirmation}
+            sibling={passwordConfirmation}
             type={isShown ? 'text' : 'password'}
             name={'passwordRegister'}
             placeholder={'Password'}
@@ -57,7 +83,7 @@ export default function Signup(): JSX.Element {
           <Input
             useRef={passwordConfirmation}
             correctValue={setPasswordConfirmationValid}
-            // sibling={password}
+            sibling={password}
             type={isShown ? 'text' : 'password'}
             name={'passwordRegisterRepeat'}
             placeholder={'Repeat your password'}
@@ -77,7 +103,7 @@ export default function Signup(): JSX.Element {
             <em>I agree to our privacy and terms of service.</em>
           </label>
           <div className={style.formOptions}>
-            <Button text={'Sign up'} width={''} />
+            <Button text={'Sign up'} width={''} type={'submit'}/>
             <span>Already have an account? <Link to='/login'>Sign in</Link></span>
           </div>
         </form>
