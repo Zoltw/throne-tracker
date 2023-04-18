@@ -17,6 +17,7 @@ export default defineConfig({
       { find: '@components', replacement: resolve(rootDir, './src/components') },
       { find: '@pages', replacement: resolve(rootDir, './src/pages') },
       { find: '@assets', replacement: resolve(rootDir, './src/assets') },
+      { find: '@utils', replacement: resolve(rootDir, './src/utils') },
     ],
   },
 });

@@ -1,36 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { InfoWindow, Marker } from '@react-google-maps/api';
+import { convertToMarkerType, fetchToilets, MarkerType } from '@utils/api/fetchToilets';
 import customMarker from '@assets/customMarker.svg';
 import Button from '@components/Button/Button';
 import style from './CustomMarker.module.css';
-
-const fetchUrl = 'http://localhost:8080/toilet';
-
-type MarkerType = {
-  location: google.maps.LatLngLiteral;
-  name: string;
-  visible: boolean;
-  __mapMarker?: google.maps.Marker;
-  _id?: string;
-};
-
-const fetchToilets = async () => {
-  const response = await fetch(fetchUrl);
-  const data = await response.json();
-  return data;
-};
-
-const convertToMarkerType = (toiletData: any): MarkerType[] => {
-  return toiletData.map((toilet: any) => ({
-    _id: toilet._id,
-    name: toilet.name,
-    location: {
-      lat: toilet.location.latitude,
-      lng: toilet.location.longitude,
-    },
-    visible: true,
-  }));
-};
 
 export default function CustomMarker(): JSX.Element {
   const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
