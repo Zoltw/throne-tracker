@@ -55,6 +55,17 @@
 4. Server is running on port 8080 - `http://localhost:8080`
 
 
+## You can also run the whole application with bash script
+
+ ### Requirements:
+ - [xterm](https://invisible-island.net/xterm/)
+
+ 
+1. On working directory
+  ```bash
+  ./setupDev.sh
+  ```
+
 ## Diagram
 
 <p align="center">
