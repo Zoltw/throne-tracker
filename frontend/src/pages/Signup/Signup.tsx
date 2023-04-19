@@ -3,7 +3,7 @@ import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef } from 'react';
-const fetchUrl = 'http://localhost:8080/users/register';
+const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/register`;
 
 const initialState = {
   isShown: false,

@@ -22,3 +22,8 @@
 h3 {
     margin-left: 0.5rem;
 }
+
+.hours {
+    padding-left: 0.5rem;
+    font-style: italic;
+}

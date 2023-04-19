@@ -7,64 +7,39 @@
  <h1 align="center">Throne Tracker</h1>
  <br/>
 
+  ## Setting up development environment of project
+
  ### Requirements:
+ - [Docker](https://www.docker.com/)
  - [Node.js](https://nodejs.org/en/)
 
-1. Make sure that you have `Node.js` installed.
+1. Make sure that you have `Node.js` and `Docker` installed.
 2. Clone the repository
  ```bash
  git clone https://github.com/Zoltw/throne-tracker.git
  ```
-
- ## Setting up development environment of frontend
- 1. Change working directory to `frontend`
+3. Go to `frontend` directory
  ```bash
  cd frontend
  ```
-2. Install dependencies
+ 4. Copy .env.example to .env
  ```bash
- npm ci
- ```
-3. Start development server
- ```bash
- npm run dev
- ```
-4. Open `http://localhost:3000` in your browser
-
-## Setting up development environment of mongodb
-
-1. On working directory
-  ```bash
-  docker-compose up mongodb
+  cp .env.example .env
   ```
-
-## Setting up development environment of backend
-
- 1. Change working directory to `backend`
+ 5. Provide your google maps Api key and backend URL in .env file
  ```bash
- cd backend
+ VITE_GOOGLE_MAPS_API_KEY= 
+ VITE_APP_BACKEND_URL=
  ```
-2. Install dependencies
+ 6. Back to root directory
  ```bash
- npm ci
- ```
-3. Start development server
- ```bash
- npm start
- ```
-4. Server is running on port 8080 - `http://localhost:8080`
-
-
-## You can also run the whole application with bash script
-
- ### Requirements:
- - [xterm](https://invisible-island.net/xterm/)
-
- 
-1. On working directory
-  ```bash
-  ./setupDev.sh
+  cd ..
   ```
+ 7. On working directory
+  ```bash
+  docker-compose up
+  ```
+ 8. Server is running on port 3000 - `http://localhost:3000`
 
 ## Diagram
 

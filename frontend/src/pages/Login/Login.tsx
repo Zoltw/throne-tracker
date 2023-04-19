@@ -3,7 +3,7 @@ import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-const fetchUrl = 'http://localhost:8080/users/login';
+const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/login`;
 
 export default function Login(): JSX.Element {
   const email = useRef<HTMLInputElement>(null);
@@ -44,7 +44,6 @@ export default function Login(): JSX.Element {
     try {
       const response = await fetch(fetchUrl, requestOptions);
       if (!response.ok) throw response;
-      console.log(response);
       navigate('/');
     } catch (err) {
       console.error(err);

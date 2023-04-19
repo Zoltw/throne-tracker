@@ -13,7 +13,7 @@ import BurgerButton from '@components/BurgerButton/BurgerButton';
 export default function App(): JSX.Element {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY!,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
   const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
@@ -35,6 +35,7 @@ export default function App(): JSX.Element {
             title={'McDonald\'s - Floriańska 55'}
             grade={4.5}
             reviewCount={23}
+            hours={'6.00 - 22.00'}
             atribute1={'free'}
             atribute2={'clean'}
             atribute3={'white'}

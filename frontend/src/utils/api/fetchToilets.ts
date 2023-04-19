@@ -1,11 +1,11 @@
-const fetchUrl = 'http://localhost:8080/toilet';
+const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/toilet`;
 
 export type MarkerType = {
+  _id?: string;
   location: google.maps.LatLngLiteral;
   name: string;
   visible: boolean;
   __mapMarker?: google.maps.Marker;
-  _id?: string;
 };
 
 export type ContentType = {

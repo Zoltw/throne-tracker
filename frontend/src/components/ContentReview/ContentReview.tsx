@@ -18,6 +18,7 @@ export interface ContentReviewProps {
   title?: string;
   grade?: number;
   reviewCount?: number;
+  hours?: string;
   atribute1?: string;
   atribute2?: string;
   atribute3?: string;
@@ -52,6 +53,7 @@ export default class ContentReview extends Component<ContentReviewProps> {
             </span>
           </div>
           <span>{this.props.reviewCount} reviews</span>
+          <span className={style.hours}>{this.props.hours}</span>
         </div>
         <div className={style.attributes}>
           <Attribute src={coins} text={this.props.atribute1}/>

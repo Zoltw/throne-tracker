@@ -1,28 +1,40 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    # environment:
-    #   - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is not set}
-    #   - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is not set}
-    ports:
-      - "27017:27017"
+  front:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile
     volumes:
-      - mongodb_data:/data/db
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev"
 
-  backend:
-      build:
-        context: .
-        dockerfile: ./docker/Dockerfile
-      container_name: backend
-      environment:
-        - MONGODB_URI=${MONGODB_URI:?MONGODB_URI is not set}
-      ports:
-        - "8080:8080"
-      depends_on:
-        - mongodb
+  back:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - '8080:8080'
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - '27017:27017'
 
 volumes:
-  mongodb_data:
+  mongo-data:

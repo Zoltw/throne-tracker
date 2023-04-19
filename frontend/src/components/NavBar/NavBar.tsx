@@ -33,12 +33,12 @@ export default class NavBar extends Component<NavBarProps, NavBarState> {
             <div style={NavBar.menuButtonStyleGenerator(signin)} />
             <span>Sign in</span>
           </NavLink>
-          <NavLink to={'/sign'} className={style.navbarLink}>
+          <NavLink to={'/signup'} className={style.navbarLink}>
             <div style={NavBar.menuButtonStyleGenerator(signup)} />
             <span>Sign up</span>
           </NavLink>
           <img className={style.toitoi} src={toilet} />
-          <NavLink to={'/#'} className={style.pap}>
+          <NavLink to={'/'} className={style.pap}>
             <span>privacy & policy</span>
           </NavLink>
         </div>
