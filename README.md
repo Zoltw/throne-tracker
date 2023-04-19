@@ -40,7 +40,10 @@
   docker-compose up
   ```
  8. Server is running on port 3000 - `http://localhost:3000`
-
+## Early view of project
+<p align="center">
+  <img src="resources/screen.png" alt="Throne Tracker Diagram"/>
+</p>
 ## Diagram
 
 <p align="center">
