@@ -10,7 +10,7 @@ import ContentRate from '@components/ContentRate/ContentRate';
 import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
 
-export default function App(): JSX.Element {
+const App = (): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -66,4 +66,6 @@ export default function App(): JSX.Element {
       /> */}
     </>
   );
-}
+};
+
+export default App;

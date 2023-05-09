@@ -1,9 +1,9 @@
-import { Component, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import style from './SmallBox.module.css';
 
 import Button from '@components/Button/Button';
 
-export interface SmallBoxProps {
+interface SmallBoxProps {
   id?: string;
   className?: string;
   firstState?: string;
@@ -11,14 +11,14 @@ export interface SmallBoxProps {
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-export default class SmallBox extends Component<SmallBoxProps> {
-  render(): JSX.Element {
-    return (
-      <div className={[style.smallBox, this.props.className].join(' ')}>
-        <span>{this.props.text}</span>
-        <Button text={'details'} />
-        <Button text={'rate it'} />
-      </div>
-    );
-  }
-}
+const SmallBox: React.FC<SmallBoxProps> = ({ className, text }) => {
+  return (
+    <div className={[style.smallBox, className].join(' ')}>
+      <span>{text}</span>
+      <Button text={'details'} />
+      <Button text={'rate it'} />
+    </div>
+  );
+};
+
+export default SmallBox;

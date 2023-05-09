@@ -33,7 +33,7 @@ const reducer = (state: any, action: { type: any; payload: any; }) => {
   }
 };
 
-export default function Signup(): JSX.Element {
+const Signup = (): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const email = useRef<HTMLInputElement>(null);
@@ -134,5 +134,6 @@ export default function Signup(): JSX.Element {
       </section>
     </div>
   );
-}
+};
 
+export default Signup;

@@ -44,6 +44,7 @@
 <p align="center">
   <img src="resources/screen.png" alt="Throne Tracker Diagram"/>
 </p>
+
 ## Diagram
 
 <p align="center">

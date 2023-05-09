@@ -1,7 +1,7 @@
-import { Component, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import style from './BigBox.module.css';
 
-export interface BigBoxProps {
+interface BigBoxProps {
   id?: string;
   className?: string;
   src: string;
@@ -9,13 +9,13 @@ export interface BigBoxProps {
   children: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-export default class BigBox extends Component<BigBoxProps> {
-  render(): JSX.Element {
-    return (
-      <div className={[style.bigbox, this.props.className].join(' ')}>
-        <img className={style.mainPhoto} src={this.props.src} alt={this.props.alt} />
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const BigBox: React.FC<BigBoxProps> = ({ id, className, src, alt, children }) => {
+  return (
+    <div id={id} className={[style.bigbox, className].join(' ')}>
+      <img className={style.mainPhoto} src={src} alt={alt} />
+      {children}
+    </div>
+  );
+};
+
+export default BigBox;

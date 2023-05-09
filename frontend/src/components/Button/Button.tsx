@@ -1,9 +1,7 @@
-import { Component } from 'react';
-
+import React from 'react';
 import style from './Button.module.css';
 
-
-export interface ButtonProps {
+interface ButtonProps {
   text: string;
   width?: string;
   onClick?: () => void;
@@ -12,18 +10,17 @@ export interface ButtonProps {
   id?: string;
 }
 
-export default class Button extends Component<ButtonProps> {
-  render(): JSX.Element {
-    return (
-      <button
-        className={[style.button, this.props.className].join(' ')}
-        style={{ width: this.props.width }}
-        onClick={this.props.onClick}
-        type={this.props.type}
-        id={this.props.id}>
-        {this.props.text}
-      </button>
-    );
-  }
-}
+const Button: React.FC<ButtonProps> = ({ text, width, onClick, type, className, id }) => {
+  return (
+    <button
+      className={[style.button, className].join(' ')}
+      style={{ width: width }}
+      onClick={onClick}
+      type={type}
+      id={id}>
+      {text}
+    </button>
+  );
+};
 
+export default Button;

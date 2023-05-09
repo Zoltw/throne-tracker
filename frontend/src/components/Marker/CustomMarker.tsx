@@ -5,7 +5,7 @@ import customMarker from '@assets/customMarker.svg';
 import Button from '@components/Button/Button';
 import style from './CustomMarker.module.css';
 
-export default function CustomMarker(): JSX.Element {
+const CustomMarker = (): JSX.Element => {
   const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
   const [markers, setMarkers] = useState<MarkerType[]>([]);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -73,4 +73,6 @@ export default function CustomMarker(): JSX.Element {
       )}
     </>
   );
-}
+};
+
+export default CustomMarker;

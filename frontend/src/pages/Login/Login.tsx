@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/login`;
 
-export default function Login(): JSX.Element {
+const Login = (): JSX.Element => {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
@@ -83,5 +83,7 @@ export default function Login(): JSX.Element {
       </section>
     </div>
   );
-}
+};
+
+export default Login;
 

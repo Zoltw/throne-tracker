@@ -1,4 +1,4 @@
-import { Component, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import style from './ContentReview.module.css';
 
 import coins from '@assets/coins.svg';
@@ -12,7 +12,7 @@ import star from '@assets/star.svg';
 import Button from '@components/Button/Button';
 import Attribute from '@components/Attribute/Attribute';
 
-export interface ContentReviewProps {
+interface ContentReviewProps {
   id?: string;
   className?: string;
   title?: string;
@@ -28,43 +28,57 @@ export interface ContentReviewProps {
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-export default class ContentReview extends Component<ContentReviewProps> {
-  render(): JSX.Element {
-    return (
-      <section className={[style.contentReviewSection, this.props.className].join(' ')}>
-        <h3>{this.props.title}</h3>
-        <div className={style.grade}>
-          <span>{this.props.grade}</span>
-          <div className={style.starsContainer}>
-            <span className={style.star} id={'first'}>
-              <img src={star}/>
-            </span>
-            <span className={style.star} id={'second'}>
-              <img src={star}/>
-            </span>
-            <span className={style.star} id={'third'}>
-              <img src={star}/>
-            </span>
-            <span className={style.star} id={'fourth'}>
-              <img src={star}/>
-            </span>
-            <span className={style.star} id={'fifth'}>
-              <img src={star}/>
-            </span>
-          </div>
-          <span>{this.props.reviewCount} reviews</span>
-          <span className={style.hours}>{this.props.hours}</span>
+const ContentReview: React.FC<ContentReviewProps> = ({
+  id,
+  className,
+  title,
+  grade,
+  reviewCount,
+  hours,
+  atribute1,
+  atribute2,
+  atribute3,
+  atribute4,
+  atribute5,
+  atribute6,
+  children }) => {
+  return (
+    <section id={id} className={[style.contentReviewSection, className].join(' ')}>
+      <h3>{title}</h3>
+      <div className={style.grade}>
+        <span>{grade}</span>
+        <div className={style.starsContainer}>
+          <span className={style.star} id={'first'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'second'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'third'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'fourth'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'fifth'}>
+            <img src={star}/>
+          </span>
         </div>
-        <div className={style.attributes}>
-          <Attribute src={coins} text={this.props.atribute1}/>
-          <Attribute src={toilet} text={this.props.atribute2}/>
-          <Attribute src={paper} text={this.props.atribute3}/>
-          <Attribute src={soap} text={this.props.atribute4}/>
-          <Attribute src={shower} text={this.props.atribute5}/>
-          <Attribute src={spray} text={this.props.atribute6}/>
-        </div>
-        <Button className={style.buttonBox} text={'rate it'}/>
-      </section>
-    );
-  }
-}
+        <span>{reviewCount} reviews</span>
+        <span className={style.hours}>{hours}</span>
+      </div>
+      <div className={style.attributes}>
+        <Attribute src={coins} text={atribute1}/>
+        <Attribute src={toilet} text={atribute2}/>
+        <Attribute src={paper} text={atribute3}/>
+        <Attribute src={soap} text={atribute4}/>
+        <Attribute src={shower} text={atribute5}/>
+        <Attribute src={spray} text={atribute6}/>
+      </div>
+      <Button className={style.buttonBox} text={'rate it'}/>
+      {children}
+    </section>
+  );
+};
+
+export default ContentReview;
