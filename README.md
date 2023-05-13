@@ -22,19 +22,19 @@
  ```bash
  cd frontend
  ```
- 4. Copy .env.example to .env
+ 4. Copy .env.template to .env
  ```bash
-  cp .env.example .env
+  cp .env.template .env
   ```
  5. Provide your google maps Api key and backend URL in .env file
  ```bash
  VITE_GOOGLE_MAPS_API_KEY= 
- VITE_APP_BACKEND_URL=
+ VITE_APP_BACKEND_URL=  #eg http://localhost:8080
  ```
  6. Back to root directory
  ```bash
-  cd ..
-  ```
+cd ..
+ ```
  7. On working directory
   ```bash
   docker-compose up

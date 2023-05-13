@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.json());
 app.use(accessControl);
-app.use("/toilet", toiletRoutes);
-app.use("/rating", ratingRoutes);
+app.use("/toilets", toiletRoutes);
+app.use("/ratings", ratingRoutes);
 app.use("/users", userRoutes);
 
 export default app;

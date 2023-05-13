@@ -3,7 +3,7 @@ import * as ratingController from "../controllers/ratingController";
 
 const router = express.Router();
 
-router.post("/toilet/:toiledId", ratingController.addRating);
-router.get("/toilet/:toiletId", ratingController.getRatingsByToiletId);
+router.post("/toilets/:toiledId", ratingController.addRating);
+router.get("/toilets/:toiletId", ratingController.getRatingsByToiletId);
 
 export default router;
