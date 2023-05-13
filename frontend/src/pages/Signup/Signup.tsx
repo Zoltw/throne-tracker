@@ -14,7 +14,16 @@ const initialState = {
   isFormValid: false,
 };
 
-const reducer = (state: any, action: { type: any; payload: any; }) => {
+interface State {
+  isShown: boolean,
+  emailValid: boolean,
+  passwordValid: boolean,
+  passwordConfirmationValid: boolean,
+  tosChecked: boolean,
+  isFormValid: boolean,
+}
+
+const reducer = (state: State, action: { type: any; payload: any; }) => {
   switch (action.type) {
     case 'SET_IS_SHOWN':
       return { ...state, isShown: action.payload };
