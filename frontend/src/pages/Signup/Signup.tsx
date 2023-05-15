@@ -1,8 +1,10 @@
 import style from './Signup.module.css';
 import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
+import mapIcon from '@assets/maps.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef } from 'react';
+import BurgerButton from '@components/BurgerButton/BurgerButton';
 const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/register`;
 
 const initialState = {
@@ -51,6 +53,10 @@ const Signup: React.FC = (): JSX.Element => {
 
   const navigate = useNavigate();
 
+  const navigator = () => {
+    navigate('/');
+  };
+
   const togglePassword = () => {
     dispatch({ type: 'SET_IS_SHOWN', payload: !state.isShown });
   };
@@ -93,6 +99,7 @@ const Signup: React.FC = (): JSX.Element => {
 
   return (
     <div className={style.backgroundSign}>
+      <BurgerButton onClick={navigator} src={mapIcon}/>
       <section className={style.section}>
         <h1 className={style.title}>Sign up to Throne Tracker</h1>
         <form onSubmit={sendRegisterRequest} className={style.form} name={'signup'}>
@@ -133,7 +140,7 @@ const Signup: React.FC = (): JSX.Element => {
               value="terms"
               required={true}
               onChange={({ target }) => dispatch({ type: 'SET_TOS_CHECKED', payload: target.checked })} />
-            <em>I agree to our privacy and terms of service.</em>
+            <em>I agree to our <Link to='/privacy'>privacy and terms of service.</Link></em>
           </label>
           <div className={style.formOptions}>
             <Button text={'Sign up'} width={''} type={'submit'}/>

@@ -6,9 +6,10 @@ interface BurgerButtonProps {
   className?: string;
   id?: string;
   onClick?: () => void;
+  src?: string;
 }
 
-const BurgerButton: React.FC<BurgerButtonProps> = ({ className, id, onClick }) => {
+const BurgerButton: React.FC<BurgerButtonProps> = ({ className, id, onClick, src }) => {
   return (
     <span className={style.shadow}>
       <button
@@ -16,7 +17,7 @@ const BurgerButton: React.FC<BurgerButtonProps> = ({ className, id, onClick }) =
         onClick={onClick}
         type={'button'}
         id={id}>
-        <img className={style.burger} src={burger}/>
+        <img className={style.burger} src={src}/>
       </button>
     </span>
   );

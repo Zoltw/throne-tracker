@@ -1,8 +1,10 @@
 import style from './Login.module.css';
 import Input from '@components/Input/Input';
 import Button from '@components/Button/Button';
+import mapIcon from '@assets/maps.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef } from 'react';
+import BurgerButton from '@components/BurgerButton/BurgerButton';
 const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/login`;
 
 const initialState = {
@@ -43,6 +45,10 @@ const Login: React.FC = (): JSX.Element => {
 
   const navigate = useNavigate();
 
+  const navigator = () => {
+    navigate('/');
+  };
+
   const togglePassword = () => {
     dispatch({
       type: 'TOGGLE_PASSWORD',
@@ -80,6 +86,7 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <div className={style.backgroundSign}>
+      <BurgerButton onClick={navigator} src={mapIcon}/>
       <section className={style.section}>
         <h1 className={style.title}>Sign in to Throne Tracker</h1>
         <form onSubmit={sendLoginRequest} className={style.form} name={'signup'}>

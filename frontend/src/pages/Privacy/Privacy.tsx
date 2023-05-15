@@ -1,12 +1,19 @@
+import BurgerButton from '@components/BurgerButton/BurgerButton';
 import style from './Privacy.module.css';
+import mapIcon from '@assets/maps.svg';
 import { Link, useNavigate } from 'react-router-dom';
 
 
 const Privacy: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
 
+  const navigator = () => {
+    navigate('/');
+  };
+
   return (
     <div className={style.backgroundSign}>
+      <BurgerButton onClick={navigator} src={mapIcon}/>
       <section className={style.section}>
         <div className={style.content}>
           <h1 className={style.title}>Privacy Policy</h1>

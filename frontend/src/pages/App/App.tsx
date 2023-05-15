@@ -4,6 +4,7 @@ import style from './App.module.css';
 import Map from '@components/Map/Map';
 import BigBox from '@components/BigBox/BigBox';
 import Toilet from '@assets/example.jpg';
+import burger from '@assets/burger.svg';
 import SmallBox from '@components/SmallBox/SmallBox';
 import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
@@ -28,7 +29,7 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <BurgerButton onClick={toggleNavBar}/>
+      <BurgerButton onClick={toggleNavBar} src={burger}/>
       {isNavBarVisible && <NavBar />}
       {/* <NavBar/> */}
       {/* <div className={style.backgroundNavbar}/> */}

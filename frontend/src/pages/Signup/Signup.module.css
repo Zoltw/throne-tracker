@@ -49,7 +49,6 @@
     height: 100%;
     line-height: 1.5em;
     text-align: center;
-    color: #8685EF;
   }
   
   input[type="checkbox"]:checked:before {
@@ -93,9 +92,8 @@
   }
   
   .formOptions a {
-    font-size: 1.4em;
+    font-size: 1em;
     text-decoration: underline;
-    color: #8685EF;
   }
   
   .label {
