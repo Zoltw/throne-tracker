@@ -35,7 +35,7 @@ const reducer = (state: State, action: { type: any; payload: any; }) => {
   }
 };
 
-const Login = (): JSX.Element => {
+const Login: React.FC = (): JSX.Element => {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
@@ -70,6 +70,7 @@ const Login = (): JSX.Element => {
 
     try {
       const response = await fetch(fetchUrl, requestOptions);
+      if (response.status === 401) console.log('dupa');
       if (!response.ok) throw response;
       navigate('/');
     } catch (err) {

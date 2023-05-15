@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { useState } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import style from './App.module.css';
 import Map from '@components/Map/Map';
@@ -9,25 +9,30 @@ import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
 import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
+import { ContentType } from '@utils/api/fetchToilets';
 
-const App = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
-  const [clickedPos, setClickedPos] = React.useState<google.maps.LatLngLiteral>({} as google.maps.LatLngLiteral);
+  const [selectedMarker, setSelectedMarker] = useState<ContentType | null>(null);
+  const [isNavBarVisible, setNavBarVisible] = useState(false);
 
   if (!isLoaded) return <div>Map Loading ...</div>;
 
+  const toggleNavBar = () => {
+    setNavBarVisible((prevState) => !prevState);
+  };
+
   return (
     <>
-      <BurgerButton/>
+      <BurgerButton onClick={toggleNavBar}/>
+      {isNavBarVisible && <NavBar />}
       {/* <NavBar/> */}
       {/* <div className={style.backgroundNavbar}/> */}
-      <Suspense fallback={<div>Loading ...</div>}>
-        <Map />
-      </Suspense>
+      <Map />
       <BigBox
         src={Toilet}
         children={

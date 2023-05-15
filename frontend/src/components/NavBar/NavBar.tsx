@@ -33,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
           <span>Sign up</span>
         </NavLink>
         <img className={style.toitoi} src={toilet} />
-        <NavLink to={'/'} className={style.pap}>
+        <NavLink to={'/privacy'} className={style.pap}>
           <span>privacy & policy</span>
         </NavLink>
       </div>

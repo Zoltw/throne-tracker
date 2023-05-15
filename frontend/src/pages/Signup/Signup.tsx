@@ -42,7 +42,7 @@ const reducer = (state: State, action: { type: any; payload: any; }) => {
   }
 };
 
-const Signup = (): JSX.Element => {
+const Signup: React.FC = (): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const email = useRef<HTMLInputElement>(null);

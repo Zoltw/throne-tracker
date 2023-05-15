@@ -1,4 +1,4 @@
-const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/toilet`;
+const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/toilets`;
 
 export type MarkerType = {
   _id?: string;

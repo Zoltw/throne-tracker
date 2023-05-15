@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 export interface RatingInterface extends mongoose.Document {
-  rateId: string;
   toiletId: mongoose.Schema.Types.ObjectId;
   amountRates: number;
   details: {
@@ -16,9 +15,7 @@ export interface RatingInterface extends mongoose.Document {
 }
 
 const ratingSchema = new mongoose.Schema({
-  rateId: { type: String, required: true, unique: true },
   toiletId: { type: mongoose.Schema.Types.ObjectId, ref: "Toilet", required: true },
-  amountRates: { type: Number, required: true },
   details: {
     rate: { type: Number, required: true },
     money: { type: String, required: true },
