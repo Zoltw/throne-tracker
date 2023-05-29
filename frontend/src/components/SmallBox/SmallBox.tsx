@@ -8,14 +8,15 @@ interface SmallBoxProps {
   className?: string;
   firstState?: string;
   text?: string;
+  onDetailsClick?: () => void;
   children?: HTMLAttributes<HTMLDivElement>['children'];
 }
 
-const SmallBox: React.FC<SmallBoxProps> = ({ className, text }) => {
+const SmallBox: React.FC<SmallBoxProps> = ({ className, text, onDetailsClick }) => {
   return (
     <div className={[style.smallBox, className].join(' ')}>
       <span>{text}</span>
-      <Button text={'details'} />
+      <Button text={'details'} onClick={onDetailsClick}/>
       <Button text={'rate it'} />
     </div>
   );

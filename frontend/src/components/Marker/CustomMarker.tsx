@@ -5,7 +5,11 @@ import customMarker from '@assets/customMarker.svg';
 import Button from '@components/Button/Button';
 import style from './CustomMarker.module.css';
 
-const CustomMarker = (): JSX.Element => {
+interface CustomMarkerProps {
+  onMarkerClick?: (marker: MarkerType) => void;
+}
+
+const CustomMarker: React.FC<CustomMarkerProps> = ({ onMarkerClick }): JSX.Element => {
   const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
   const [markers, setMarkers] = useState<MarkerType[]>([]);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -40,6 +44,7 @@ const CustomMarker = (): JSX.Element => {
 
   const handleMarkerClick = (marker: MarkerType) => {
     setSelectedMarker(marker);
+    onMarkerClick?.(marker);
   };
 
   const handleInfoWindowClose = () => {
@@ -66,7 +71,7 @@ const CustomMarker = (): JSX.Element => {
         >
           <div className={style.smallBox}>
             <span>{selectedMarker.name}</span>
-            <Button text={'details'} />
+            <Button text={'details'} onClick={() => onMarkerClick && onMarkerClick(selectedMarker)}/>
             <Button text={'rate it'} />
           </div>
         </InfoWindow>

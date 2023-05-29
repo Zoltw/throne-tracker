@@ -13,7 +13,7 @@ const Privacy: React.FC = (): JSX.Element => {
 
   return (
     <div className={style.backgroundSign}>
-      <BurgerButton onClick={navigator} src={mapIcon}/>
+      <BurgerButton className={style.burger} onClick={navigator} src={mapIcon}/>
       <section className={style.section}>
         <div className={style.content}>
           <h1 className={style.title}>Privacy Policy</h1>

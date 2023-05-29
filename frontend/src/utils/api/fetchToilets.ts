@@ -4,6 +4,13 @@ export type MarkerType = {
   _id?: string;
   location: google.maps.LatLngLiteral;
   name: string;
+  hours: string;
+  atribute1: string;
+  atribute2: string;
+  atribute3: string;
+  atribute4: string;
+  atribute5: string;
+  atribute6: string;
   visible: boolean;
   __mapMarker?: google.maps.Marker;
 };
@@ -27,7 +34,7 @@ export type ContentType = {
 };
 
 
-export const fetchToilets = async () => {
+export const fetchToilets = async (): Promise<JSON> => {
   const response = await fetch(fetchUrl);
   const data = await response.json();
   return data;

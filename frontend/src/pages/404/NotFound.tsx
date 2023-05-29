@@ -13,7 +13,7 @@ const NotFound: React.FC = (): JSX.Element => {
 
   return (
     <div className={style.backgroundSign}>
-      <BurgerButton onClick={navigator} src={mapIcon}/>
+      <BurgerButton className={style.burger} onClick={navigator} src={mapIcon}/>
       <p className={style.error}>404</p>
       <footer>Contact Us:  <a className={style.menuAnimation} href="mailto:filip.zolyniak@zoltw.com?">filip.zolyniak@zoltw.com</a></footer>
     </div>

@@ -74,7 +74,7 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <div className={style.backgroundSign}>
-      <BurgerButton onClick={navigator} src={mapIcon}/>
+      <BurgerButton className={style.burger} onClick={navigator} src={mapIcon}/>
       <section className={style.section}>
         <h1 className={style.title}>Sign in to Throne Tracker</h1>
         <form onSubmit={sendLoginRequest} className={style.form} name={'signup'}>

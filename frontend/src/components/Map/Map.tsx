@@ -2,6 +2,7 @@ import { GoogleMap } from '@react-google-maps/api';
 import style from './Map.module.css';
 import { center, options } from './settings';
 import CustomMarker from '../Marker/CustomMarker';
+import { MarkerType } from '@utils/api/fetchToilets';
 
 interface MapProps {
   id?: string;
@@ -14,6 +15,7 @@ interface MapProps {
   zoom?: number;
   streetView?: google.maps.StreetViewPanorama;
   onClick?: (e: google.maps.MapMouseEvent) => void;
+  onMarkerClick?: (marker: MarkerType) => void;
 }
 
 const Map: React.FC<MapProps> = ({
@@ -25,6 +27,7 @@ const Map: React.FC<MapProps> = ({
   zoom = 15,
   streetView,
   onClick = () => undefined,
+  onMarkerClick,
 }) => {
   return (
     <GoogleMap
@@ -39,7 +42,7 @@ const Map: React.FC<MapProps> = ({
       streetView={streetView}
       onClick={onClick}
     >
-      <CustomMarker />
+      <CustomMarker onMarkerClick={onMarkerClick}/>
     </GoogleMap>
   );
 };

@@ -24,6 +24,14 @@
 
 }
 
+.burger {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  filter: drop-shadow(4px 5px 4px rgba(0, 0, 0, 0.25));
+  z-index: 100;
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: 600;

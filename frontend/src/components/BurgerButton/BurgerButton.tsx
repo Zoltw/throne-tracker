@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './BurgerButton.module.css';
-import burger from '@assets/burger.svg';
 
 interface BurgerButtonProps {
   className?: string;
@@ -11,9 +10,9 @@ interface BurgerButtonProps {
 
 const BurgerButton: React.FC<BurgerButtonProps> = ({ className, id, onClick, src }) => {
   return (
-    <span className={style.shadow}>
+    <span className={className}>
       <button
-        className={[style.button, className].join(' ')}
+        className={style.button}
         onClick={onClick}
         type={'button'}
         id={id}>

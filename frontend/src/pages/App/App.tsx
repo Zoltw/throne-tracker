@@ -5,12 +5,12 @@ import Map from '@components/Map/Map';
 import BigBox from '@components/BigBox/BigBox';
 import Toilet from '@assets/example.jpg';
 import burger from '@assets/burger.svg';
-import SmallBox from '@components/SmallBox/SmallBox';
 import ContentReview from '@components/ContentReview/ContentReview';
 import ContentRate from '@components/ContentRate/ContentRate';
 import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
-import { ContentType } from '@utils/api/fetchToilets';
+import Xmark from '@assets/xmark.svg';
+import { ContentType, MarkerType } from '@utils/api/fetchToilets';
 
 const App: React.FC = (): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
@@ -18,7 +18,7 @@ const App: React.FC = (): JSX.Element => {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
-  const [selectedMarker, setSelectedMarker] = useState<ContentType | null>(null);
+  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
   const [isNavBarVisible, setNavBarVisible] = useState(false);
 
   if (!isLoaded) return <div>Map Loading ...</div>;
@@ -27,49 +27,35 @@ const App: React.FC = (): JSX.Element => {
     setNavBarVisible((prevState) => !prevState);
   };
 
+  const handleMarkerClick = (marker: MarkerType) => {
+    setSelectedMarker(marker);
+  };
+
   return (
     <>
-      <BurgerButton onClick={toggleNavBar} src={burger}/>
+      <BurgerButton className={style.burger} onClick={toggleNavBar} src={burger}/>
       {isNavBarVisible && <NavBar />}
-      {/* <NavBar/> */}
-      {/* <div className={style.backgroundNavbar}/> */}
-      <Map />
-      <BigBox
-        src={Toilet}
-        children={
-          <ContentReview
-            title={'McDonald\'s - Floriańska 55'}
-            grade={4.5}
-            reviewCount={23}
-            hours={'6.00 - 22.00'}
-            atribute1={'free'}
-            atribute2={'clean'}
-            atribute3={'white'}
-            atribute4={'yes'}
-            atribute5={'no'}
-            atribute6={'ugly'}
-          />}
-        // children={
-        //   <ContentRate />
-        // }
-      />
-      {/* <Marker throne={{
-        throneId: 0,
-        location: {
-          address: {
-            country: 'Poland',
-            city: 'Kraków',
-            zip: '31-019',
-            addressLine1: 'Floriańska 55',
-          },
-          latitude: 50.0646923541517,
-          longitude: 19.941350749541165,
-        },
-        name: 'McDonald\'s - Floriańska 55',
-      }} map={<Map/>}/> */}
-      {/* <SmallBox
-        text={'McDonald\'s - Floriańska 55'}
-      /> */}
+      <Map onMarkerClick={handleMarkerClick}/>
+      {selectedMarker && (
+        <>
+          <BurgerButton className={style.bigBoxClose} src={Xmark} onClick={() => setSelectedMarker(null)}/>
+          <BigBox
+            src={Toilet}
+            children={<ContentReview
+              title={selectedMarker.name ?? 'no data'}
+              grade={4.5}
+              reviewCount={23}
+              hours={selectedMarker.hours ?? 'no data'}
+              atribute1={selectedMarker.atribute1 ?? 'no data'}
+              atribute2={selectedMarker.atribute2 ?? 'no data'}
+              atribute3={selectedMarker.atribute3 ?? 'no data'}
+              atribute4={selectedMarker.atribute4 ?? 'no data'}
+              atribute5={selectedMarker.atribute5 ?? 'no data'}
+              atribute6={selectedMarker.atribute6 ?? 'no data'}
+            />}
+          />
+        </>
+      )}
     </>
   );
 };
