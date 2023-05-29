@@ -1,7 +1,7 @@
 import BurgerButton from '@components/BurgerButton/BurgerButton';
 import style from './Privacy.module.css';
 import mapIcon from '@assets/maps.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Privacy: React.FC = (): JSX.Element => {

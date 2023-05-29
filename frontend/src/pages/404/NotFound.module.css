@@ -1,0 +1,56 @@
+.backgroundSign { 
+    background: url(src/assets/backgroundSign.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.content {
+  margin: 0 1rem;
+}
+
+.error {
+  font-size: 10rem;
+  font-weight: 600;
+  line-height: 1.5em;
+  color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 10%;
+  color: white;
+}
+
+.menuAnimation {
+  display: inline-block;
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
+
+.menuAnimation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(245, 238, 230);
+  transform-origin: bottom right;
+  transition: transform 0.35s ease-out;
+}
+
+.menuAnimation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
