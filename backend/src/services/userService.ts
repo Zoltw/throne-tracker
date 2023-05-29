@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 
 export const createUser = async (userData: UserInterface): Promise<UserInterface> => {
   const hashedPassword = await bcrypt.hash(userData.password, 10);
-  // const user = new User({ ...userData.toObject(), password: hashedPassword });
   const user = new User({ ...userData, password: hashedPassword });
   await user.save();
   return user;

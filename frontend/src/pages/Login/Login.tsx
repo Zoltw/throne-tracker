@@ -5,7 +5,7 @@ import mapIcon from '@assets/maps.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef } from 'react';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
-const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/login`;
+import { login as apiLogin } from '@utils/auth/auth';
 
 const initialState = {
   isShown: false,
@@ -14,7 +14,7 @@ const initialState = {
   isFormValid: false,
 };
 
-interface State {
+interface LoginState {
   isShown: boolean;
   emailValid: boolean;
   passwordValid: boolean;
@@ -22,7 +22,7 @@ interface State {
 }
 
 
-const reducer = (state: State, action: { type: any; payload: any; }) => {
+const reducer = (state: LoginState, action: { type: any; payload: any; }) => {
   switch (action.type) {
     case 'TOGGLE_PASSWORD':
       return { ...state, isShown: !state.isShown };
@@ -63,24 +63,12 @@ const Login: React.FC = (): JSX.Element => {
   const sendLoginRequest = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
-    const body = {
-      email: email.current?.value,
-      password: password.current?.value,
-    };
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    };
+    const username = email.current?.value ?? '';
+    const passwd = password.current?.value ?? '';
 
-
-    try {
-      const response = await fetch(fetchUrl, requestOptions);
-      if (response.status === 401) console.log('dupa');
-      if (!response.ok) throw response;
-      navigate('/');
-    } catch (err) {
-      console.error(err);
+    const resp = await apiLogin(username, passwd, navigate);
+    if (resp !== undefined) {
+      console.log(resp);
     }
   };
 
