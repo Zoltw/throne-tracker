@@ -15,7 +15,6 @@ export interface ToiletInterface extends mongoose.Document {
     latitude: number;
     longitude: number;
   };
-  rates: RatingInterface[];
 }
 
 const toiletSchema = new mongoose.Schema({
@@ -32,7 +31,6 @@ const toiletSchema = new mongoose.Schema({
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
   },
-  rates: [{ type: mongoose.Schema.Types.ObjectId, ref: "Rating" }],
 });
 
 export const Toilet = mongoose.model<ToiletInterface>("Toilet", toiletSchema);

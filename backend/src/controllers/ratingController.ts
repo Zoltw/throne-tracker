@@ -13,9 +13,9 @@ export const addRating = async (req: Request, res: Response) => {
 };
 
 export const getRatingsByToiletId = async (req: Request, res: Response) => {
-  const toiletId = req.params.toiletId;
+  const toiletId = Number(req.params.toiletId);
   try {
-    const ratings = await ratingsService.getRatingsByToiletId(toiletId);
+    const ratings = await ratingsService.getAverageRating(toiletId);
     res.json(ratings);
   } catch (error) {
     res.status(404).json({ message: error });

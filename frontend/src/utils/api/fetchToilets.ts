@@ -2,9 +2,11 @@ const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/toilets`;
 
 export type MarkerType = {
   _id?: string;
+  toiletId?: string;
   location: google.maps.LatLngLiteral;
   name: string;
   hours: string;
+  address: string;
   atribute1: string;
   atribute2: string;
   atribute3: string;
@@ -17,7 +19,9 @@ export type MarkerType = {
 
 export type ContentType = {
   _id: string;
+  toiletId: string;
   name: string;
+  hours: string;
   location: {
     address: {
       country: string;
@@ -43,11 +47,14 @@ export const fetchToilets = async (): Promise<JSON> => {
 export const convertToMarkerType = (toiletData: any): MarkerType[] => {
   return toiletData.map((toilet: any) => ({
     _id: toilet._id,
+    toiletId: toilet.toiletId,
     name: toilet.name,
+    hours: toilet.hours,
     location: {
       lat: toilet.location.latitude,
       lng: toilet.location.longitude,
     },
+    address: toilet.location.address.addressLine1,
     visible: true,
   }));
 };
@@ -55,7 +62,9 @@ export const convertToMarkerType = (toiletData: any): MarkerType[] => {
 export const convertToContentType = (toiletData: any): ContentType[] => {
   return toiletData.map((toilet: any) => ({
     _id: toilet._id,
+    toiletId: toilet.toiletId,
     name: toilet.name,
+    hours: toilet.hours,
     location: {
       address: {
         country: toilet.location.address.country,

@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 import React, { useState } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
 import style from './App.module.css';
@@ -11,6 +12,7 @@ import NavBar from '@components/NavBar/NavBar';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
 import Xmark from '@assets/xmark.svg';
 import { ContentType, MarkerType } from '@utils/api/fetchToilets';
+import { fetchAverageRating, Rate, RateDetails } from '@utils/api/fetchRates';
 
 const App: React.FC = (): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
@@ -19,6 +21,7 @@ const App: React.FC = (): JSX.Element => {
   });
 
   const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
+  const [averageRating, setAverageRating] = useState<Rate | null>(null);
   const [isNavBarVisible, setNavBarVisible] = useState(false);
 
   if (!isLoaded) return <div>Map Loading ...</div>;
@@ -27,31 +30,49 @@ const App: React.FC = (): JSX.Element => {
     setNavBarVisible((prevState) => !prevState);
   };
 
-  const handleMarkerClick = (marker: MarkerType) => {
+  const handleMarkerClick = async (marker: MarkerType) => {
     setSelectedMarker(marker);
+    const data = await fetchAverageRating(marker.toiletId ?? '');
+
+    const translations = {
+      clean: { yes: 'clean', no: 'no clean' },
+      money: { yes: 'free', no: 'paid' },
+      paper: { yes: 'white', no: 'no' },
+      shower: { yes: 'yes', no: 'no' },
+      smell: { yes: 'nice', no: 'ugly' },
+      soap: { yes: 'yes', no: 'no' },
+    };
+    for (const detail in translations) {
+      const key = detail as keyof typeof translations;
+      if (data.details[key]) {
+        data.details[key] = translations[key][data.details[key] as 'yes' | 'no'];
+      }
+    }
+
+    setAverageRating(data);
   };
 
   return (
     <>
       <BurgerButton className={style.burger} onClick={toggleNavBar} src={burger}/>
       {isNavBarVisible && <NavBar />}
-      <Map onMarkerClick={handleMarkerClick}/>
-      {selectedMarker && (
+      <Map onDetailsClick={handleMarkerClick}/>
+      {selectedMarker && averageRating && (
         <>
           <BurgerButton className={style.bigBoxClose} src={Xmark} onClick={() => setSelectedMarker(null)}/>
           <BigBox
             src={Toilet}
             children={<ContentReview
               title={selectedMarker.name ?? 'no data'}
-              grade={4.5}
-              reviewCount={23}
+              grade={averageRating.rate}
+              reviewCount={averageRating.count}
               hours={selectedMarker.hours ?? 'no data'}
-              atribute1={selectedMarker.atribute1 ?? 'no data'}
-              atribute2={selectedMarker.atribute2 ?? 'no data'}
-              atribute3={selectedMarker.atribute3 ?? 'no data'}
-              atribute4={selectedMarker.atribute4 ?? 'no data'}
-              atribute5={selectedMarker.atribute5 ?? 'no data'}
-              atribute6={selectedMarker.atribute6 ?? 'no data'}
+              atribute1={averageRating.details.money ?? 'no data'}
+              atribute2={averageRating.details.clean ?? 'no data'}
+              atribute3={averageRating.details.paper ?? 'no data'}
+              atribute4={averageRating.details.soap ?? 'no data'}
+              atribute5={averageRating.details.shower ?? 'no data'}
+              atribute6={averageRating.details.smell ?? 'no data'}
             />}
           />
         </>

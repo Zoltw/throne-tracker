@@ -1,23 +1,24 @@
 import mongoose from "mongoose";
 
+export interface RatingDetailFields {
+  money: string;
+  clean: string;
+  paper: string;
+  soap: string;
+  shower: string;
+  smell: string;
+}
+
 export interface RatingInterface extends mongoose.Document {
-  toiletId: mongoose.Schema.Types.ObjectId;
-  amountRates: number;
-  details: {
-    rate: number;
-    money: string;
-    clean: string;
-    paper: string;
-    soap: string;
-    shower: string;
-    smell: string;
-  };
+  toiletId: number;
+  details: RatingDetailFields,
+  rate: number;
 }
 
 const ratingSchema = new mongoose.Schema({
-  toiletId: { type: mongoose.Schema.Types.ObjectId, ref: "Toilet", required: true },
+  toiletId: { type: Number, required: true },
+  rate: { type: Number, required: true },
   details: {
-    rate: { type: Number, required: true },
     money: { type: String, required: true },
     clean: { type: String, required: true },
     paper: { type: String, required: true },
@@ -26,5 +27,31 @@ const ratingSchema = new mongoose.Schema({
     smell: { type: String, required: true },
   },
 });
+
+export interface AverageRatingResult {
+  toiletId: number;
+  rate: number;
+  count: number;
+  details: {
+    money: string;
+    clean: string;
+    paper: string;
+    soap: string;
+    shower: string;
+    smell: string;
+  }
+}
+
+export interface RateDetails {
+  money: string;
+  clean: string;
+  paper: string;
+  soap: string;
+  shower: string;
+  smell: string;
+  [key: string]: string;
+}
+
+
 
 export const Rating = mongoose.model<RatingInterface>("Rating", ratingSchema);

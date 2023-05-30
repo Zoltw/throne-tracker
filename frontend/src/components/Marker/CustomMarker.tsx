@@ -6,10 +6,11 @@ import Button from '@components/Button/Button';
 import style from './CustomMarker.module.css';
 
 interface CustomMarkerProps {
-  onMarkerClick?: (marker: MarkerType) => void;
+  onDetailsClick?: (marker: MarkerType) => void;
+  onRateClick?: (marker: MarkerType) => void;
 }
 
-const CustomMarker: React.FC<CustomMarkerProps> = ({ onMarkerClick }): JSX.Element => {
+const CustomMarker: React.FC<CustomMarkerProps> = ({ onDetailsClick, onRateClick }): JSX.Element => {
   const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
   const [markers, setMarkers] = useState<MarkerType[]>([]);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -44,7 +45,7 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({ onMarkerClick }): JSX.Eleme
 
   const handleMarkerClick = (marker: MarkerType) => {
     setSelectedMarker(marker);
-    onMarkerClick?.(marker);
+    onDetailsClick?.(marker);
   };
 
   const handleInfoWindowClose = () => {
@@ -70,9 +71,9 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({ onMarkerClick }): JSX.Eleme
           onCloseClick={handleInfoWindowClose}
         >
           <div className={style.smallBox}>
-            <span>{selectedMarker.name}</span>
-            <Button text={'details'} onClick={() => onMarkerClick && onMarkerClick(selectedMarker)}/>
-            <Button text={'rate it'} />
+            <strong>{selectedMarker.name}</strong>
+            <sub>{selectedMarker.address}</sub>
+            <Button text={'details'} onClick={() => onDetailsClick && onDetailsClick(selectedMarker)}/>
           </div>
         </InfoWindow>
       )}
