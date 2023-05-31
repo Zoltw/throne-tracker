@@ -42,11 +42,12 @@ cd ..
  8. Server is running on port 3000 - `http://localhost:3000`
 ## Early view of project
 <p align="center">
-  <img src="resources/screen.png" alt="Throne Tracker Diagram"/>
+  <img src="resources/screen1.png" alt="Throne Tracker"/>
+  <img src="resources/screen2.png" alt="Throne Tracker"/>
 </p>
 
 ## Diagram
 
 <p align="center">
-  <img src="resources/throne-tracker-mongo-diagram.png" alt="Throne Tracker Diagram"/>
+  <img src="resources/diagram.svg" alt="Throne Tracker Diagram"/>
 </p>

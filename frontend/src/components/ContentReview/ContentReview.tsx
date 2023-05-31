@@ -53,6 +53,18 @@ const ContentReview: React.FC<ContentReviewProps> = ({
           <span className={style.star} id={'first'}>
             <img src={star}/>
           </span>
+          <span className={style.star} id={'first'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'first'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'first'}>
+            <img src={star}/>
+          </span>
+          <span className={style.star} id={'first'}>
+            <img src={star}/>
+          </span>
         </div>
         <div className={style.reviews}>
           <span>{reviewCount} reviews</span>

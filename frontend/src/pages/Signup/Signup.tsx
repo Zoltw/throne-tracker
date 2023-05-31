@@ -5,44 +5,9 @@ import mapIcon from '@assets/maps.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useReducer, useRef } from 'react';
 import BurgerButton from '@components/BurgerButton/BurgerButton';
+import { initialState, reducer } from '@utils/reducers/signupReducer';
 const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/users/register`;
 
-const initialState = {
-  isShown: false,
-  emailValid: false,
-  passwordValid: false,
-  passwordConfirmationValid: false,
-  tosChecked: false,
-  isFormValid: false,
-};
-
-interface State {
-  isShown: boolean,
-  emailValid: boolean,
-  passwordValid: boolean,
-  passwordConfirmationValid: boolean,
-  tosChecked: boolean,
-  isFormValid: boolean,
-}
-
-const reducer = (state: State, action: { type: any; payload: any; }) => {
-  switch (action.type) {
-    case 'SET_IS_SHOWN':
-      return { ...state, isShown: action.payload };
-    case 'SET_EMAIL_VALID':
-      return { ...state, emailValid: action.payload };
-    case 'SET_PASSWORD_VALID':
-      return { ...state, passwordValid: action.payload };
-    case 'SET_PASSWORD_CONFIRMATION_VALID':
-      return { ...state, passwordConfirmationValid: action.payload };
-    case 'SET_TOS_CHECKED':
-      return { ...state, tosChecked: action.payload };
-    case 'SET_IS_FORM_VALID':
-      return { ...state, isFormValid: action.payload };
-    default:
-      return state;
-  }
-};
 
 const Signup: React.FC = (): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
