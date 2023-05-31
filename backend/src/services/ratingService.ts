@@ -13,9 +13,9 @@ export const getRatingsByToiletId = async (toiletId: string): Promise<RatingInte
 
 export const getAverageRating = async (toiletId: number): Promise<AverageRatingResult> => {
   const ratings = await Rating.find({ toiletId: toiletId });
-
-  if (ratings.length === 0) {
-    throw new Error('No ratings found for this toiletId');
+  
+  if(ratings === Array(0)) {
+    return {} as AverageRatingResult;
   }
 
   let rateSum = 0;

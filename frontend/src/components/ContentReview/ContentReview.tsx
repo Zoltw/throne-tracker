@@ -7,7 +7,7 @@ import paper from '@assets/toilet-paper.svg';
 import shower from '@assets/shower.svg';
 import soap from '@assets/soap.svg';
 import spray from '@assets/spray.svg';
-import star from '@assets/star.svg';
+import star from '@assets/star-yellow.svg';
 
 import Button from '@components/Button/Button';
 import Attribute from '@components/Attribute/Attribute';
@@ -26,6 +26,7 @@ interface ContentReviewProps {
   atribute5?: string;
   atribute6?: string;
   children?: HTMLAttributes<HTMLDivElement>['children'];
+  onRateItClick?: () => void;
 }
 
 const ContentReview: React.FC<ContentReviewProps> = ({
@@ -41,7 +42,8 @@ const ContentReview: React.FC<ContentReviewProps> = ({
   atribute4,
   atribute5,
   atribute6,
-  children }) => {
+  children,
+  onRateItClick }) => {
   return (
     <section id={id} className={[style.contentReviewSection, className].join(' ')}>
       <h3>{title}</h3>
@@ -51,21 +53,11 @@ const ContentReview: React.FC<ContentReviewProps> = ({
           <span className={style.star} id={'first'}>
             <img src={star}/>
           </span>
-          <span className={style.star} id={'second'}>
-            <img src={star}/>
-          </span>
-          <span className={style.star} id={'third'}>
-            <img src={star}/>
-          </span>
-          <span className={style.star} id={'fourth'}>
-            <img src={star}/>
-          </span>
-          <span className={style.star} id={'fifth'}>
-            <img src={star}/>
-          </span>
         </div>
-        <span>{reviewCount} reviews</span>
-        <span className={style.hours}>{hours}</span>
+        <div className={style.reviews}>
+          <span>{reviewCount} reviews</span>
+          <span className={style.hours}>{hours}</span>
+        </div>
       </div>
       <div className={style.attributes}>
         <Attribute src={coins} text={atribute1}/>
@@ -75,7 +67,7 @@ const ContentReview: React.FC<ContentReviewProps> = ({
         <Attribute src={shower} text={atribute5}/>
         <Attribute src={spray} text={atribute6}/>
       </div>
-      <Button className={style.buttonBox} text={'rate it'}/>
+      <Button className={style.buttonBox} text={'rate it'} onClick={onRateItClick}/>
       {children}
     </section>
   );

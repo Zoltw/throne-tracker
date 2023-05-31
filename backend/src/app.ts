@@ -1,4 +1,5 @@
 import express from "express";
+import fetch from "node-fetch";
 import toiletRoutes from "./routes/toiletRoutes";
 import ratingRoutes from "./routes/ratingRoutes";
 import userRoutes from "./routes/userRoutes";
@@ -26,5 +27,12 @@ app.use(accessControl);
 app.use("/toilets", toiletRoutes);
 app.use("/ratings", ratingRoutes);
 app.use("/users", userRoutes);
+
+app.get('/proxy/:url', async (req, res) => {
+  const url = req.params.url;
+  const response = await fetch(url);
+  const body = await response.text();
+  res.send(body);
+});
 
 export default app;

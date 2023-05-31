@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import style from './BigBox.module.css';
 
 interface BigBoxProps {
@@ -10,9 +10,21 @@ interface BigBoxProps {
 }
 
 const BigBox: React.FC<BigBoxProps> = ({ id, className, src, alt, children }) => {
+  const [photo, setPhoto] = useState<string>('');
+
+  useEffect(() => {
+    const fetchPhoto = async () => {
+      const response = await fetch(`http://localhost:8080/proxy/${encodeURIComponent(src)}`);
+      if (response.ok) {
+        setPhoto(src);
+      }
+    };
+    fetchPhoto();
+  }, [src]);
+
   return (
     <div id={id} className={[style.bigbox, className].join(' ')}>
-      <img className={style.mainPhoto} src={src} alt={alt} />
+      <img className={style.mainPhoto} src={photo} alt={alt} />
       {children}
     </div>
   );

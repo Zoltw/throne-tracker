@@ -5,6 +5,7 @@ export interface ToiletInterface extends mongoose.Document {
   toiletId: string;
   name: string;
   hours: string;
+  photo: string;
   location: {
     address: {
       country: string;
@@ -21,6 +22,7 @@ const toiletSchema = new mongoose.Schema({
   toiletId: { type: String, required: true },
   name: { type: String, required: true },
   hours: { type: String, required: true},
+  photo: { type: String, required: true},
   location: {
     address: {
       country: { type: String, required: true },

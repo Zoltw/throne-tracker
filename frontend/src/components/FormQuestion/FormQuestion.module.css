@@ -2,9 +2,13 @@
     height: 2rem;
     width: 2rem;
     margin: 0.1rem 0.2rem 0 0.2rem;
-}
-
-input[type="checkbox"] {
+    display: inline-block;
+    background-size: cover;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+.checkbox {
     display: none;
 }
 

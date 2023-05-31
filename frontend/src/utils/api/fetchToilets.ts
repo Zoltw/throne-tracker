@@ -6,13 +6,8 @@ export type MarkerType = {
   location: google.maps.LatLngLiteral;
   name: string;
   hours: string;
+  photo: string;
   address: string;
-  atribute1: string;
-  atribute2: string;
-  atribute3: string;
-  atribute4: string;
-  atribute5: string;
-  atribute6: string;
   visible: boolean;
   __mapMarker?: google.maps.Marker;
 };
@@ -22,6 +17,7 @@ export type ContentType = {
   toiletId: string;
   name: string;
   hours: string;
+  photo: string;
   location: {
     address: {
       country: string;
@@ -50,6 +46,7 @@ export const convertToMarkerType = (toiletData: any): MarkerType[] => {
     toiletId: toilet.toiletId,
     name: toilet.name,
     hours: toilet.hours,
+    photo: toilet.photo,
     location: {
       lat: toilet.location.latitude,
       lng: toilet.location.longitude,
@@ -65,6 +62,7 @@ export const convertToContentType = (toiletData: any): ContentType[] => {
     toiletId: toilet.toiletId,
     name: toilet.name,
     hours: toilet.hours,
+    photo: toilet.photo,
     location: {
       address: {
         country: toilet.location.address.country,
