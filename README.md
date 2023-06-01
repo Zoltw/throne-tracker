@@ -37,10 +37,10 @@ cd ..
  ```
  7. On working directory
   ```bash
-  docker-compose up
+  docker compose up
   ```
  8. Server is running on port 3000 - `http://localhost:3000`
-## Early view of project
+
 <p align="center">
   <img src="resources/screen1.png" alt="Throne Tracker"/>
   <img src="resources/screen2.png" alt="Throne Tracker"/>

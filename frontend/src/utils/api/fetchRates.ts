@@ -29,12 +29,7 @@ export const fetchRates = async (): Promise<Rate[]> => {
 };
 
 export const fetchAverageRating = async (toiletId: string): Promise<Rate> => {
-  // try {
   const response = await fetch(`${fetchUrl}/${toiletId}`);
   const data = await response.json();
   return data;
-  // } catch (error) {
-  //   console.error(error);
-  //   return ;
-  // }
 };

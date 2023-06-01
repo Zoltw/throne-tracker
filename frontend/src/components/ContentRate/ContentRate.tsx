@@ -4,7 +4,6 @@ import style from './ContentRate.module.css';
 import Button from '@components/Button/Button';
 import StarSection from '@components/StarSection/StarSection';
 import FormQuestion from '@components/FormQuestion/FormQuestion';
-import { useNavigate } from 'react-router-dom';
 const fetchUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/ratings`;
 interface ContentRateProps {
   id?: string;
@@ -23,8 +22,6 @@ const ContentRate: React.FC<ContentRateProps> = ({ id, className, toiletId, chil
     isThereAShower: false,
     wasThereANiceSmell: false,
   });
-
-  const navigate = useNavigate();
 
   const navigator = () => {
     location.reload();

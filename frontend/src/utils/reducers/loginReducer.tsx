@@ -5,7 +5,7 @@ export const initialState = {
   isFormValid: false,
 };
 
-export interface LoginState {
+interface LoginState {
   isShown: boolean;
   emailValid: boolean;
   passwordValid: boolean;
