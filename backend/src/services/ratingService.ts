@@ -13,10 +13,6 @@ export const getRatingsByToiletId = async (toiletId: string): Promise<RatingInte
 
 export const getAverageRating = async (toiletId: number): Promise<AverageRatingResult> => {
   const ratings = await Rating.find({ toiletId: toiletId });
-  
-  if(ratings === Array(0)) {
-    return {} as AverageRatingResult;
-  }
 
   let rateSum = 0;
   const detailFields: RatingDetailFieldKey[] = ['money', 'clean', 'paper', 'soap', 'shower', 'smell'];
@@ -42,6 +38,7 @@ export const getAverageRating = async (toiletId: number): Promise<AverageRatingR
 
   const averageRate = rateSum / ratings.length;
   const ratingsAmount = ratings.length;
+
   
   const averageDetails = detailFields.reduce((result, field) => {
     result[field] = detailVotes[field].yes > detailVotes[field].no ? 'yes' : 'no';
