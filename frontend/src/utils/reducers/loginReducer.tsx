@@ -6,7 +6,7 @@ interface LoginState {
 }
 
 type Action =
-  | { type: 'TOGGLE_PASSWORD' }
+  | { type: 'TOGGLE_PASSWORD'; payload: undefined }
   | { type: 'SET_EMAIL_VALID'; payload: boolean }
   | { type: 'SET_PASSWORD_VALID'; payload: boolean }
   | { type: 'SET_FORM_VALID'; payload: boolean };
