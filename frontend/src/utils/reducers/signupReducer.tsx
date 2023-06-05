@@ -1,3 +1,20 @@
+interface SignUpState {
+  isShown: boolean,
+  emailValid: boolean,
+  passwordValid: boolean,
+  passwordConfirmationValid: boolean,
+  tosChecked: boolean,
+  isFormValid: boolean,
+}
+
+type Action =
+  | { type: 'SET_IS_SHOWN'; payload: boolean }
+  | { type: 'SET_EMAIL_VALID'; payload: boolean }
+  | { type: 'SET_PASSWORD_VALID'; payload: boolean }
+  | { type: 'SET_PASSWORD_CONFIRMATION_VALID'; payload: boolean }
+  | { type: 'SET_TOS_CHECKED'; payload: boolean }
+  | { type: 'SET_IS_FORM_VALID'; payload: boolean };
+
 export const initialState = {
   isShown: false,
   emailValid: false,
@@ -7,16 +24,7 @@ export const initialState = {
   isFormValid: false,
 };
 
-interface State {
-  isShown: boolean,
-  emailValid: boolean,
-  passwordValid: boolean,
-  passwordConfirmationValid: boolean,
-  tosChecked: boolean,
-  isFormValid: boolean,
-}
-
-export const reducer = (state: State, action: { type: any; payload: any; }) => {
+export const reducer = (state: SignUpState, action: Action): SignUpState => {
   switch (action.type) {
     case 'SET_IS_SHOWN':
       return { ...state, isShown: action.payload };
