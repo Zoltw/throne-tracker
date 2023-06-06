@@ -40,8 +40,8 @@ export const fetchToilets = async (): Promise<JSON> => {
   return data;
 };
 
-export const convertToMarkerType = (toiletData: any): MarkerType[] => {
-  return toiletData.map((toilet: any) => ({
+export const convertToMarkerType = (toiletData: ContentType[]): MarkerType[] => {
+  return toiletData.map((toilet: ContentType) => ({
     _id: toilet._id,
     toiletId: toilet.toiletId,
     name: toilet.name,
@@ -56,8 +56,8 @@ export const convertToMarkerType = (toiletData: any): MarkerType[] => {
   }));
 };
 
-export const convertToContentType = (toiletData: any): ContentType[] => {
-  return toiletData.map((toilet: any) => ({
+export const convertToContentType = (toiletData: ContentType[]): ContentType[] => {
+  return toiletData.map((toilet: ContentType) => ({
     _id: toilet._id,
     toiletId: toilet.toiletId,
     name: toilet.name,

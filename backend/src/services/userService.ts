@@ -4,23 +4,18 @@ import bcrypt from "bcrypt";
 export const createUser = async (userData: UserInterface): Promise<UserInterface> => {
   const hashedPassword = await bcrypt.hash(userData.password, 10);
   const user = new User({ ...userData, password: hashedPassword });
-  console.log(user);
   await user.save();
   return user;
 };
 
-export const loginUser = async (email: string, password: string): Promise<UserInterface | null> => {
+export const loginUser = async (email: string, password: string): Promise<UserInterface | Error | null> => {
   const user = await User.findOne({ email });
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return Error("User not found");
 
   const passwordMatch = await bcrypt.compare(password, user.password);
 
-  if (!passwordMatch) {
-    return null;
-  }
+  if (!passwordMatch) return Error("Incorrect password");
 
   return user;
 };
@@ -35,8 +30,4 @@ export const updateUser = async (userId: string, userData: Partial<UserInterface
   }
 
   return await User.findByIdAndUpdate(userId, userData, { new: true });
-};
-
-export const deleteUser = async (userId: string): Promise<void> => {
-  await User.findByIdAndDelete(userId);
 };
